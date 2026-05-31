@@ -1,13 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AUDIT-AI™ — Real AI Visibility Audit</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Audit·AI™ — Real AI Visibility Audit by 5thElement.ai</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@600;700;800&display=swap" rel="stylesheet">
+
 <style>
-:root{--bg:#fff;--text:#050505;--muted:#555;--panel:#f6f6f8;--border:#ddd;--blue:#005bbb;--green:#138a43;--red:#c5332b;--gold:#9a6500}
-*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}.wrap{max-width:1100px;margin:auto;padding:28px}header{border-bottom:1px solid var(--border);padding-bottom:24px;margin-bottom:48px}.brand{font-size:34px;font-weight:800}.brand span{color:var(--blue)}.hero{text-align:center;max-width:760px;margin:auto}.hero h1{font-size:56px;line-height:1;margin:20px 0}.hero em{color:var(--blue)}.inputbox{max-width:760px;margin:32px auto;background:var(--panel);border:1px solid var(--border);border-radius:24px;padding:18px}.row{display:flex;gap:10px}input,select,button{font:inherit}input{flex:1;padding:16px;border:1px solid var(--border);border-radius:14px}button{padding:14px 22px;border:0;border-radius:14px;background:var(--text);color:#fff;font-weight:700;cursor:pointer}.toggles,.modes{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}.toggle,.mode{background:#fff;color:var(--text);border:1px solid var(--border)}.active{background:var(--blue)!important;color:#fff!important}.watch,.results,.glossary{margin-top:38px}.card{background:var(--panel);border:1px solid var(--border);border-radius:18px;padding:20px;margin-bottom:14px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}.levels{display:grid;grid-template-columns:repeat(6,1fr);gap:10px}.level{text-align:center;background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:14px}.level strong{display:block;font-size:30px}.signal{display:grid;grid-template-columns:90px 1fr 90px;gap:12px;align-items:start;border-bottom:1px solid var(--border);padding:12px 0}.pass{color:var(--green);font-weight:800}.fail{color:var(--red);font-weight:800}.blocked{color:var(--gold);font-weight:800}.stream{height:300px;overflow:auto;background:#111;color:#eee;border-radius:18px;padding:16px;font-family:monospace;font-size:13px}.stream div{padding:5px 0;border-bottom:1px solid #333}details{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:16px;margin-bottom:10px}summary{cursor:pointer;font-weight:800}details p{margin:10px 0 0}.small{font-size:13px;color:var(--muted)}.score{font-size:70px;font-weight:900;color:var(--blue)}@media(max-width:800px){.row,.grid,.levels{grid-template-columns:1fr;display:grid}.signal{grid-template-columns:1fr}.hero h1{font-size:40px}}
+:root{
+  --bg:#ffffff;
+  --text:#050505;
+  --muted:#666;
+  --line:#e3e3e8;
+  --panel:#f7f7f9;
+  --blue:#005bbb;
+  --green:#0b8f43;
+  --red:#c7352e;
+  --gold:#8a5b00;
+  --radius:18px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Arial,sans-serif;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding:28px}
+a{color:var(--blue);text-decoration:none}
+header{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:42px}
+.headerTop{display:flex;justify-content:space-between;gap:24px;align-items:flex-start}
+.logoRow{display:flex;gap:16px;align-items:center}
+.logoImg{width:280px;max-width:100%;height:72px;object-fit:cover;border-radius:10px;border:1px solid var(--line)}
+.logoText{font-family:"Playfair Display",serif;font-weight:800;font-size:28px;letter-spacing:-.04em}
+.logoText em{color:var(--blue)}
+.sub{font-size:11px;font-weight:800;letter-spacing:.18em;text-transform:uppercase}
+.meta{text-align:right;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.meta strong{color:var(--text)}
+.hero{max-width:820px;margin:54px auto 42px;text-align:center}
+.eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--blue);font-weight:800;margin-bottom:18px}
+h1{font-family:"Playfair Display",serif;font-size:68px;line-height:.98;letter-spacing:-.055em;margin:0 0 24px}
+h1 em{color:var(--blue)}
+.hero p{font-size:18px;max-width:700px;margin:auto}
+.inputbox{max-width:760px;margin:36px auto 56px}
+.inputrow{display:flex;gap:10px;background:var(--panel);border:1px solid var(--line);border-radius:999px;padding:8px}
+input{flex:1;border:0;background:transparent;padding:0 20px;font-size:16px;outline:0}
+button{border:0;cursor:pointer;font-family:Inter,Arial,sans-serif}
+.run{background:#050505;color:#fff;border-radius:999px;padding:16px 34px;font-weight:800}
+.modebar,.audiencebar{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:16px}
+.pill{background:#fff;color:#050505;border:1px solid var(--line);border-radius:999px;padding:10px 16px;font-weight:800}
+.pill.active{background:var(--blue);color:#fff;border-color:var(--blue)}
+.watch{display:none;max-width:980px;margin:0 auto 60px;background:#0b0b0d;color:#fff;border-radius:22px;overflow:hidden}
+.watchHead{display:flex;justify-content:space-between;border-bottom:1px solid #25252a;padding:22px 26px}
+.watchTitle{font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#64b5ff;font-weight:800}
+.stream{height:320px;overflow:auto;padding:18px 26px;font-family:Consolas,monospace;font-size:13px}
+.stream div{padding:7px 0;border-bottom:1px solid #24242a}
+.results{display:none}
+.resultTop{display:grid;grid-template-columns:260px 1fr;gap:56px;align-items:center;margin-bottom:70px}
+.ring{width:230px;height:230px;border-radius:50%;border:14px solid #e8e8ee;display:flex;align-items:center;justify-content:center;position:relative;margin:auto}
+.ring:after{content:"";position:absolute;inset:-14px;border-radius:50%;border:14px solid var(--blue);clip-path:polygon(50% 50%,100% 0,100% 100%,0 100%,0 0)}
+.ringInner{position:relative;z-index:2;background:#fff;border-radius:50%;width:155px;height:155px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.score{font-family:"Playfair Display",serif;font-size:72px;font-weight:800;line-height:.9}
+.scoreSmall{font-size:13px;font-weight:700}
+.grade{margin-top:10px;color:var(--blue);border:1.5px solid var(--blue);border-radius:999px;padding:4px 14px;font-size:12px;font-weight:800}
+.reportTitle{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:800;margin-bottom:10px}
+.target{font-family:"Playfair Display",serif;font-size:28px;font-weight:700;margin-bottom:4px}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:28px 0 62px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.cardLabel{font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--blue)}
+.cardScore{font-family:"Playfair Display",serif;font-size:46px;font-weight:800;margin-top:10px}
+.statusOK{color:var(--green);font-weight:900}
+.statusFAIL{color:var(--red);font-weight:900}
+.statusBLOCKED{color:var(--gold);font-weight:900}
+.sectionTitle{font-family:"Playfair Display",serif;font-size:34px;margin:54px 0 20px}
+.sectionTitle em{color:var(--blue)}
+.levels{display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:46px}
+.level{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:20px 14px;text-align:center}
+.levelName{min-height:44px;font-size:14px;color:#444}
+.levelScore{font-family:"Playfair Display",serif;font-size:34px;font-weight:800;margin:8px 0}
+.level button{background:transparent;color:var(--blue);font-weight:800;padding:6px 0}
+.detailsBox{display:none;background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px;margin-top:12px;text-align:left}
+.signal{display:grid;grid-template-columns:90px 1fr 90px;gap:14px;padding:16px 0;border-bottom:1px solid var(--line)}
+.signal strong{font-weight:800}
+.signal p{margin:4px 0 0;color:var(--muted);font-size:14px}
+.glossary details{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-bottom:12px}
+.glossary summary{cursor:pointer;font-weight:900}
+.glossary p{margin:10px 0 0}
+.footer{margin-top:70px;border-top:1px solid var(--line);padding-top:36px}
+.footerGrid{display:grid;grid-template-columns:2fr 1fr 1fr;gap:24px}
+.proofList{font-size:12px;line-height:1.7;word-break:break-all}
+.small{font-size:13px;color:var(--muted)}
+.legal{border-top:1px solid var(--line);margin-top:28px;padding-top:18px;font-size:12px;color:var(--muted)}
+@media(max-width:900px){
+  .headerTop{flex-direction:column}.meta{text-align:left}.logoImg{width:100%;height:auto}
+  h1{font-size:44px}.inputrow{border-radius:22px;flex-direction:column}.run{width:100%}
+  .resultTop,.cards,.levels,.footerGrid{grid-template-columns:1fr}.signal{grid-template-columns:1fr}
+}
 </style>
+
+<script type="application/ld+json">
+{
+  "@context":"https://schema.org",
+  "@type":"Organization",
+  "@id":"https://5thelement.ai/#organization",
+  "name":"5thElement.ai",
+  "url":"https://5thelement.ai/",
+  "parentOrganization":{"@type":"Organization","name":"AiVenture SRL","url":"https://aiventure.ro/"},
+  "email":"contact@5thelement.ai",
+  "telephone":"+40737123540",
+  "knowsAbout":["AI Delivery Infrastructure","AI Signals","AI Visibility","AEO","GEO","AIO","AI Trust","AI Readiness"]
+}
+</script>
 
 <script type="application/ld+json">
 {
@@ -33,134 +133,125 @@
 <div class="wrap">
 
 <header>
-  <div class="brand">Audit<span>·AI™</span></div>
-  <p class="small">Real Worker v1.4 · Evidence Engine · Business Maturity Labels</p>
+  <div class="headerTop">
+    <div>
+      <div class="logoRow">
+        <img class="logoImg" src="/assets/5thelement-logo.jpeg" alt="5thElement.ai logo" onerror="this.style.display='none'">
+        <div>
+          <div class="logoText">Audit<em>·AI™</em></div>
+          <div class="sub">167-Signal AI Visibility Engine</div>
+        </div>
+      </div>
+    </div>
+    <div class="meta">
+      <strong>Version:</strong> v1.1 Complete<br>
+      <strong>Worker:</strong> v1.4 Evidence Engine<br>
+      <strong>Current:</strong> <span id="now">loading...</span><br>
+      <strong>Last update:</strong> 2026-05-31 21:25 EEST<br>
+      AEO · GEO · AIO · SEO
+    </div>
+  </div>
 </header>
 
 <section class="hero">
-  <p><strong>Real AI Visibility Audit</strong></p>
-  <h1>Your website is now an <em>AI source.</em></h1>
-  <p>Run a real evidence-based audit. No fake scores. Every result comes from measurable endpoints, schema, headers or machine-readable files.</p>
+  <div class="eyebrow">Complete Diagnostic · Real Evidence · No Fake Scores</div>
+  <h1>Your AI Search Visibility,<br><em>Diagnosed.</em></h1>
+  <p>Enter any URL and receive a real AI visibility audit powered by the Cloudflare Worker Evidence Engine.</p>
 </section>
 
 <section class="inputbox">
-  <div class="row">
-    <input id="site" placeholder="example.com">
-    <button onclick="runAudit()">Run Audit</button>
+  <div class="inputrow">
+    <input id="site" placeholder="yoursite.com">
+    <button class="run" onclick="runAudit()">Run Audit</button>
   </div>
 
-  <div class="modes">
-    <button class="mode active" onclick="setMode('0',this)">0 · Free</button>
-    <button class="mode" onclick="setMode('1',this)">1 · Pro</button>
-    <button class="mode" onclick="setMode('2',this)">2 · Master</button>
+  <div class="modebar">
+    <button class="pill active" onclick="setMode('0',this)">0 · Free</button>
+    <button class="pill" onclick="setMode('1',this)">1 · Pro</button>
+    <button class="pill" onclick="setMode('2',this)">2 · Master</button>
   </div>
 
-  <div class="toggles">
-    <button class="toggle active" onclick="setAudience('owner',this)">Firm Owner View</button>
-    <button class="toggle" onclick="setAudience('technical',this)">Technical View</button>
+  <div class="audiencebar">
+    <button class="pill active" onclick="setAudience('owner',this)">Firm Owner</button>
+    <button class="pill" onclick="setAudience('technical',this)">Technical</button>
   </div>
 </section>
 
-<section id="watch" class="watch" style="display:none">
-  <h2>Live Signal Watch</h2>
+<section id="watch" class="watch">
+  <div class="watchHead">
+    <div>
+      <div class="watchTitle">Live Signal Watch</div>
+      <strong id="watchTarget">—</strong>
+    </div>
+    <strong id="watchCount">0 checked</strong>
+  </div>
   <div id="stream" class="stream"></div>
 </section>
 
 <section id="results" class="results"></section>
 
 <section id="business-glossary" class="glossary">
-  <h2>Business Glossary</h2>
-  <p class="small">Plain-language definitions for firm owners. This section is visible in HTML and also supported by DefinedTerm schema for AI systems.</p>
+  <h2 class="sectionTitle">Business <em>Glossary</em></h2>
+  <p class="small">Plain-language definitions for firm owners. This accordion content is visible in HTML and supported by DefinedTerm schema for AI systems.</p>
 
-  <details open>
-    <summary>AI Visibility — Can AI include your company in answers?</summary>
-    <p>AI Visibility is the ability of AI systems to find, understand, trust and use information about your company.</p>
-    <p><strong>5thelement.ai example:</strong> exposes AI-readable discovery, declaration, trust and proof signals.</p>
-    <p><strong>Related:</strong> AEO, GEO, AIO, AI Discovery, AI Trust.</p>
-  </details>
-
-  <details>
-    <summary>AI Discovery — Can AI find you?</summary>
-    <p>AI Discovery means AI crawlers can find your machine-readable entry points.</p>
-    <p><strong>Measured by:</strong> robots.txt, sitemap.xml, llms.txt.</p>
-    <p><strong>5thelement.ai example:</strong> /robots.txt, /sitemap.xml, /llms.txt.</p>
-  </details>
-
-  <details>
-    <summary>AI Understanding — Can AI understand what you do?</summary>
-    <p>AI Understanding means your content is structured clearly enough for AI systems to classify your business.</p>
-    <p><strong>Measured by:</strong> title, meta description, H1, JSON-LD, Organization Schema, Service Schema.</p>
-  </details>
-
-  <details>
-    <summary>AEO — Answer Engine Optimization</summary>
-    <p>AEO helps AI systems answer user questions using your company information.</p>
-    <p><strong>Business question:</strong> Can AI answer with my company?</p>
-    <p><strong>Related:</strong> FAQ Schema, intents.json, AI Answer Readiness.</p>
-  </details>
-
-  <details>
-    <summary>GEO — Generative Engine Optimization</summary>
-    <p>GEO helps generative AI describe your company accurately.</p>
-    <p><strong>Business question:</strong> Can AI explain who we are correctly?</p>
-    <p><strong>Related:</strong> Entity Graph, AI Declaration, authority.json.</p>
-  </details>
-
-  <details>
-    <summary>AIO — AI Optimization</summary>
-    <p>AIO is the broader discipline of making a company understandable, usable and trusted by AI systems.</p>
-    <p><strong>Business question:</strong> Can AI understand and trust our company?</p>
-  </details>
-
-  <details>
-    <summary>AI Signals — Machine-readable business signals</summary>
-    <p>AI Signals are declarative files, headers, schemas and proof tokens that tell machine systems how to read, trust and use your website.</p>
-    <p><strong>Examples:</strong> llms.txt, ai.json, authority.json, intents.json, ai-proof.json.</p>
-  </details>
-
-  <details>
-    <summary>llms.txt — AI directory file</summary>
-    <p>llms.txt is a plain-text guide that helps AI systems understand the most important parts of a website.</p>
-    <p><strong>5thelement.ai example:</strong> https://5thelement.ai/llms.txt</p>
-  </details>
-
-  <details>
-    <summary>ai.json — Machine-readable company declaration</summary>
-    <p>ai.json declares who the company is, what it offers and how AI systems should understand it.</p>
-  </details>
-
-  <details>
-    <summary>authority.json — Authority declaration</summary>
-    <p>authority.json helps AI systems identify the owner, operator and authority structure of a domain.</p>
-  </details>
-
-  <details>
-    <summary>intents.json — Questions your company can answer</summary>
-    <p>intents.json declares the buyer questions, use cases and business intents your company is prepared to answer.</p>
-  </details>
-
-  <details>
-    <summary>ai-proof.json — Proof and provenance layer</summary>
-    <p>ai-proof.json exposes proof references such as SHA-256 hashes, OpenTimestamps or Bitcoin anchoring.</p>
-  </details>
-
-  <details>
-    <summary>ADI — AI Delivery Infrastructure</summary>
-    <p>ADI is infrastructure that helps AI systems discover, understand, trust and act on company information.</p>
-    <p><strong>5thelement.ai example:</strong> Edge-native AI-readable business infrastructure.</p>
-  </details>
-
-  <details>
-    <summary>AI Visibility Spectrum — How AI sees a website</summary>
-    <ol>
-      <li><strong>Crawlable:</strong> Can AI bots access the site?</li>
-      <li><strong>Readable:</strong> Can AI extract meaning?</li>
-      <li><strong>Citable:</strong> Can AI use the site as a source?</li>
-      <li><strong>Verifiable:</strong> Can AI verify proof and provenance?</li>
-      <li><strong>Actionable:</strong> Can AI agents execute workflows?</li>
-    </ol>
-  </details>
+  <details open><summary>AI Visibility — Can AI include your company in answers?</summary><p>AI Visibility is the ability of AI systems to find, understand, trust and use information about your company.</p><p><strong>5thelement.ai example:</strong> exposes AI-readable discovery, declaration, trust and proof signals.</p></details>
+  <details><summary>AI Discovery — Can AI find you?</summary><p>AI Discovery means AI crawlers can find your machine-readable entry points.</p><p><strong>Measured by:</strong> robots.txt, sitemap.xml, llms.txt.</p></details>
+  <details><summary>AI Understanding — Can AI understand what you do?</summary><p>AI Understanding means your content is structured clearly enough for AI systems to classify your business.</p><p><strong>Measured by:</strong> title, meta description, H1, JSON-LD, Organization Schema, Service Schema.</p></details>
+  <details><summary>AEO — Answer Engine Optimization</summary><p>AEO helps AI systems answer user questions using your company information.</p></details>
+  <details><summary>GEO — Generative Engine Optimization</summary><p>GEO helps generative AI describe your company accurately.</p></details>
+  <details><summary>AIO — AI Optimization</summary><p>AIO is the broader discipline of making a company understandable, usable and trusted by AI systems.</p></details>
+  <details><summary>AI Signals — Machine-readable business signals</summary><p>AI Signals are declarative files, headers, schemas and proof tokens that tell machine systems how to read, trust and use your website.</p></details>
+  <details><summary>AI Visibility Spectrum — How AI sees a website</summary><ol><li><strong>Crawlable:</strong> Can AI bots access the site?</li><li><strong>Readable:</strong> Can AI extract meaning?</li><li><strong>Citable:</strong> Can AI use the site as a source?</li><li><strong>Verifiable:</strong> Can AI verify proof and provenance?</li><li><strong>Actionable:</strong> Can AI agents execute workflows?</li></ol></details>
 </section>
+
+<footer class="footer">
+  <div class="footerGrid">
+    <div>
+      <h3>5thElement.ai / AiVenture SRL</h3>
+      <p class="small">AI Delivery Infrastructure, AI Visibility, AI Trust and AI Readiness systems for companies entering the AI-mediated search and answer economy.</p>
+      <p><strong>Email:</strong> <a href="mailto:contact@5thelement.ai">contact@5thelement.ai</a><br>
+      <strong>Phone:</strong> <a href="tel:+40737123540">+40737123540</a><br>
+      <strong>Website:</strong> <a href="https://5thelement.ai/">https://5thelement.ai</a></p>
+    </div>
+    <div>
+      <h3>Quick Links</h3>
+      <p><a href="https://5thelement.ai/ai.json">ai.json</a></p>
+      <p><a href="https://5thelement.ai/llms.txt">llms.txt</a></p>
+      <p><a href="https://5thelement.ai/ai-proof.json">ai-proof.json</a></p>
+      <p><a href="https://5thelement.ai/authority.json">authority.json</a></p>
+      <p><a href="https://5thelement.ai/intents.json">intents.json</a></p>
+    </div>
+    <div>
+      <h3>Legal</h3>
+      <p><a href="#terms">Terms & Conditions</a></p>
+      <p><a href="#privacy">Privacy / GDPR Policy</a></p>
+      <p><a href="#cookies">Cookie Policy</a></p>
+      <p><a href="#business-glossary">Business Glossary</a></p>
+    </div>
+  </div>
+
+  <h3>Innovation Proof Layer</h3>
+  <div class="proofList">
+    <p><strong>Web-AI B2B Network:</strong> 4d708888ebe4dfb79f36052f6c34735d4516f5501f5402126c300e76892ad5a6</p>
+    <p><strong>B2B Indirect Marketing:</strong> 217881f60755e3701496b1cb8690d0fd807362f64f478618385ae23318387499</p>
+    <p><strong>AI-Trust Protocol:</strong> 2395f0b7bd8c3d319a555c0c8638544e343f26d38d1bde28de84d15516990b5e</p>
+    <p><strong>1-Click Edge Injector:</strong> 697fe1310d5b453ac71c637a2d5af655221f4e0bbc1f3117c023fa9a0444f826</p>
+    <p><strong>B2B Economic Twins:</strong> 0716ca58759f65f4760259efe71e99eecf5d22d7471ce4ef7107b49a86c0a077</p>
+    <p><strong>AI Delivery Infrastructure:</strong> 31aa7a564ad93f21752e6c8d1b31f105688156182cfb1bcd6fb65ef1c756bc36</p>
+    <p><strong>AI Sonar™:</strong> c57529c8c8bfb010483fc00d4cefece739fdf7c624b8cd1bb6b26f9455f156b5 · OTS Bitcoin block 949375</p>
+    <p><strong>Mockingbird Handshake™:</strong> fb3882881d15dd05056140c7928b8b94e2a323e0d0c53dd5fc1c411bc2b16a22 · OTS Bitcoin block 949346</p>
+  </div>
+
+  <div id="terms" class="legal">
+    <strong>Terms & Conditions:</strong> This tool provides technical and informational audit results. It does not provide legal certification, regulatory certification, or guaranteed AI ranking.
+  </div>
+  <div id="privacy" class="legal">
+    <strong>Privacy / GDPR Policy:</strong> This demo audit runs a public URL check. Contact details entered in future versions should be processed only for audit delivery, follow-up, and support requests.
+  </div>
+  <div id="cookies" class="legal">
+    <strong>Cookie Policy:</strong> This static version does not require marketing cookies. Future analytics or CRM integrations should be disclosed clearly before activation.
+  </div>
+</footer>
 
 </div>
 
@@ -170,54 +261,39 @@ let MODE="0";
 let AUDIENCE="owner";
 let LAST=null;
 
-function setMode(m,btn){
-  MODE=m;
-  document.querySelectorAll(".mode").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
+function updateClock(){
+  document.getElementById("now").textContent=new Date().toLocaleString("en-GB",{timeZone:"Europe/Bucharest"});
 }
+setInterval(updateClock,1000); updateClock();
 
-function setAudience(a,btn){
-  AUDIENCE=a;
-  document.querySelectorAll(".toggle").forEach(b=>b.classList.remove("active"));
-  btn.classList.add("active");
-  if(LAST) renderResults(LAST);
-}
-
-function normalizeUrl(v){
-  v=(v||"").trim();
-  if(!v)return "";
-  if(!/^https?:\/\//i.test(v))v="https://"+v;
-  return v;
-}
-
-function log(msg,type){
-  const s=document.getElementById("stream");
-  const d=document.createElement("div");
-  d.innerHTML=msg;
-  d.className=type||"";
-  s.appendChild(d);
-  s.scrollTop=s.scrollHeight;
-}
+function setMode(m,btn){MODE=m;document.querySelectorAll(".modebar .pill").forEach(b=>b.classList.remove("active"));btn.classList.add("active")}
+function setAudience(a,btn){AUDIENCE=a;document.querySelectorAll(".audiencebar .pill").forEach(b=>b.classList.remove("active"));btn.classList.add("active");if(LAST)renderResults(LAST)}
+function normalizeUrl(v){v=(v||"").trim();if(!v)return "";if(!/^https?:\/\//i.test(v))v="https://"+v;return v}
+function escapeHtml(v){return String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;")}
+function logLine(text){const s=document.getElementById("stream");const d=document.createElement("div");d.innerHTML=text;s.appendChild(d);s.scrollTop=s.scrollHeight}
 
 async function runAudit(){
   const target=normalizeUrl(document.getElementById("site").value);
-  if(!target){alert("Enter a website first.");return;}
-
+  if(!target){alert("Enter a website first.");return}
   document.getElementById("watch").style.display="block";
-  document.getElementById("stream").innerHTML="";
+  document.getElementById("results").style.display="none";
   document.getElementById("results").innerHTML="";
+  document.getElementById("stream").innerHTML="";
+  document.getElementById("watchTarget").textContent=target;
+  document.getElementById("watchCount").textContent="0 checked";
+  logLine("Calling real Worker v1.4: "+escapeHtml(target));
 
-  log("Calling real Worker v1.4: "+target,"");
   const res=await fetch(WORKER+"?url="+encodeURIComponent(target)+"&mode="+MODE);
   const data=await res.json();
   LAST=data;
 
+  let count=0;
   for(const sig of data.signals){
-    const cls=sig.pass?"pass":"fail";
-    log(sig.id+" · "+sig.name+" → <strong class='"+cls+"'>"+sig.status+"</strong><br><span class='small'>"+escapeHtml(sig.evidence)+"</span>",cls);
-    await new Promise(r=>setTimeout(r,20));
+    count++;
+    document.getElementById("watchCount").textContent=count+" checked";
+    logLine(escapeHtml(sig.id)+" · "+escapeHtml(sig.name)+" → <strong class='"+(sig.pass?"statusOK":"statusFAIL")+"'>"+sig.status+"</strong><br><span class='small'>"+escapeHtml(sig.evidence)+"</span>");
+    await new Promise(r=>setTimeout(r,18));
   }
-
   renderResults(data);
 }
 
@@ -225,90 +301,39 @@ function renderResults(d){
   const scores=d.ai_maturity_scores||d.level_scores||{};
   const failed=(d.signals||[]).filter(s=>!s.pass);
   const passed=(d.signals||[]).filter(s=>s.pass);
+  const ownerLabels={L1:"Can AI find you?",L2:"Can AI understand you?",L3:"Can AI identify you?",L4:"Can AI recommend you?",L5:"Can AI trust you?",L6:"Are you AI-ready?"};
 
-  const ownerLabels={
-    L1:"Can AI find you?",
-    L2:"Can AI understand you?",
-    L3:"Can AI identify you?",
-    L4:"Can AI recommend you?",
-    L5:"Can AI trust you?",
-    L6:"Are you AI-ready?"
-  };
-
-  let levelsHtml="";
+  let levelHtml="";
   for(const code of ["L1","L2","L3","L4","L5","L6"]){
-    const x=scores[code];
-    if(!x)continue;
+    const x=scores[code]; if(!x)continue;
     const label=AUDIENCE==="owner"?ownerLabels[code]:x.public_label;
-    levelsHtml+=`
-      <div class="level">
-        <span class="small">${label}</span>
-        <strong>${x.score}</strong>
-        <span class="${x.status==='BLOCKED'?'blocked':x.status==='OK'?'pass':'fail'}">${x.status}</span>
-      </div>`;
+    const cls=x.status==="OK"?"statusOK":x.status==="BLOCKED"?"statusBLOCKED":"statusFAIL";
+    const related=(d.signals||[]).filter(s=>s.level===code);
+    const passedItems=related.filter(s=>s.pass);
+    const failedItems=related.filter(s=>!s.pass);
+    levelHtml+=`<div class="level"><div class="levelName">${escapeHtml(label)}</div><div class="levelScore">${x.score}</div><div class="${cls}">${escapeHtml(x.status)}</div><button onclick="toggleDetails('${code}')">See why</button><div id="details-${code}" class="detailsBox"><strong>${escapeHtml(x.public_label||code)}</strong><p class="small">${escapeHtml(x.question||"")}</p><p><strong>Passed:</strong> ${passedItems.length} · <strong>Failed:</strong> ${failedItems.length}</p>${failedItems.map(s=>`<p class="small">✗ ${escapeHtml(s.name)} — ${escapeHtml(s.evidence)}</p>`).join("")}${passedItems.slice(0,4).map(s=>`<p class="small">✓ ${escapeHtml(s.name)}</p>`).join("")}</div></div>`;
   }
 
-  let signalsHtml="";
-  for(const s of failed){
-    signalsHtml+=`
-      <div class="signal">
-        <strong>${s.id}</strong>
-        <div>
-          <strong>${s.name}</strong>
-          <div class="small">${escapeHtml(s.evidence)}</div>
-        </div>
-        <span class="fail">FAIL</span>
-      </div>`;
-  }
-
-  let recHtml="";
-  for(const r of d.recommendations||[]){
-    recHtml+=`<div class="card"><strong>${escapeHtml(r)}</strong><p class="small">Generated from failed measurable signals.</p></div>`;
-  }
-
+  const businessScores=buildBusinessScores(scores);
+  document.getElementById("results").style.display="block";
   document.getElementById("results").innerHTML=`
-    <div class="card">
-      <p class="small">${d.product}</p>
-      <div class="score">${d.ai_ready_score}/100</div>
-      <h2>${escapeHtml(d.maturity_name||d.maturity_level)}</h2>
-      <p>${escapeHtml(d.maturity_summary)}</p>
-      <p><strong>Status:</strong> ${d.status}</p>
-      <p><strong>Target:</strong> ${d.target}</p>
-    </div>
-
-    <div class="grid">
-      <div class="card"><h3>Signals checked</h3><div class="score">${d.evidence_summary.total_signals_checked}</div></div>
-      <div class="card"><h3>Passed</h3><div class="score">${d.evidence_summary.passed}</div></div>
-      <div class="card"><h3>Failed</h3><div class="score">${d.evidence_summary.failed}</div></div>
-    </div>
-
-    <h2>AI Maturity Map</h2>
-    <div class="levels">${levelsHtml}</div>
-
-    <div class="card">
-      <h3>Maturity Gate</h3>
-      <p>${escapeHtml(d.maturity_gate.reason)}</p>
-    </div>
-
-    <h2>Failed Signals</h2>
-    <div>${signalsHtml}</div>
-
-    <h2>Recommendations</h2>
-    <div>${recHtml}</div>
-
-    <h2>Sample Passed Evidence</h2>
-    <div>${passed.slice(0,8).map(s=>`
-      <div class="signal">
-        <strong>${s.id}</strong>
-        <div><strong>${s.name}</strong><div class="small">${escapeHtml(s.evidence)}</div></div>
-        <span class="pass">PASS</span>
-      </div>`).join("")}</div>
+    <div class="resultTop"><div class="ring"><div class="ringInner"><div class="score">${d.ai_ready_score}</div><div class="scoreSmall">/ 100</div><div class="grade">${escapeHtml(d.status)}</div></div></div><div><div class="reportTitle">AI Visibility Composite — Real Worker Audit</div><div class="target">${escapeHtml(d.target)}</div><div class="small">${escapeHtml(d.checked_at)}</div><p style="margin-top:18px">${escapeHtml(d.maturity_summary)}</p></div></div>
+    <div class="cards"><div class="card"><div class="cardLabel">AEO</div><p>Answer Engine Optimization</p><div class="cardScore">${businessScores.aeo}</div><span class="${businessScores.aeo>=70?'statusOK':'statusFAIL'}">${businessScores.aeo>=70?'Strong':'Weak'}</span></div><div class="card"><div class="cardLabel" style="color:#8a5b00">GEO</div><p>Generative Engine Optimization</p><div class="cardScore">${businessScores.geo}</div><span class="${businessScores.geo>=70?'statusOK':'statusFAIL'}">${businessScores.geo>=70?'Strong':'Weak'}</span></div><div class="card"><div class="cardLabel" style="color:#138a43">AIO</div><p>AI Optimization</p><div class="cardScore">${businessScores.aio}</div><span class="${businessScores.aio>=70?'statusOK':'statusFAIL'}">${businessScores.aio>=70?'Strong':'Weak'}</span></div></div>
+    <h2 class="sectionTitle">AI Maturity <em>Map</em></h2><div class="levels">${levelHtml}</div>
+    <div class="card"><div class="cardLabel">Maturity Gate</div><p>${escapeHtml(d.maturity_gate.reason)}</p></div>
+    <h2 class="sectionTitle">Failed <em>Signals</em></h2>${failed.map(s=>`<div class="signal"><strong>${escapeHtml(s.id)}</strong><div><strong>${escapeHtml(s.name)}</strong><p>${escapeHtml(s.evidence)}</p></div><span class="statusFAIL">FAIL</span></div>`).join("")}
+    <h2 class="sectionTitle">Recommendations</h2>${d.recommendations.map(r=>`<div class="card"><strong>${escapeHtml(r)}</strong><p class="small">Generated from failed measurable signals.</p></div>`).join("")}
+    <h2 class="sectionTitle">Sample Passed <em>Evidence</em></h2>${passed.slice(0,8).map(s=>`<div class="signal"><strong>${escapeHtml(s.id)}</strong><div><strong>${escapeHtml(s.name)}</strong><p>${escapeHtml(s.evidence)}</p></div><span class="statusOK">PASS</span></div>`).join("")}
   `;
+  document.getElementById("results").scrollIntoView({behavior:"smooth"});
 }
 
-function escapeHtml(v){
-  return String(v??"").replaceAll("&","&amp;").replaceAll("<","&lt;").replaceAll(">","&gt;").replaceAll('"',"&quot;").replaceAll("'","&#039;");
+function buildBusinessScores(scores){
+  const L1=scores.L1?.score||0,L2=scores.L2?.score||0,L3=scores.L3?.score||0,L4=scores.L4?.score||0,L5=scores.L5?.score||0,L6=scores.L6?.score||0;
+  return {aeo:Math.round((L1*.25)+(L2*.25)+(L4*.35)+(L5*.15)),geo:Math.round((L2*.35)+(L3*.35)+(L5*.20)+(L1*.10)),aio:Math.round((L1*.15)+(L2*.20)+(L3*.20)+(L4*.15)+(L5*.20)+(L6*.10))};
 }
+function toggleDetails(code){const el=document.getElementById("details-"+code);el.style.display=el.style.display==="block"?"none":"block"}
 </script>
+
 </body>
 </html>
