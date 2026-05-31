@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>AUDIT-AI™ Premium Real Audit v1</title>
+<meta name="description" content="Operational AI Visibility, Transparency and Readiness audit powered by a real Cloudflare Worker Evidence Engine." />
+<style>
+:root{
+  --bg:#ffffff;--bg2:#f6f6f7;--bg3:#ececf0;--text:#050505;--muted:#5d5d66;--line:rgba(0,0,0,.12);
+  --blue:#0457c8;--green:#147a3d;--red:#c0392b;--gold:#8a5a00;--purple:#5e2ca5;
+  --blueBg:#eaf2ff;--greenBg:#e9f7ef;--redBg:#fdecea;--goldBg:#fff3cd;--purpleBg:#f1ebff;
+  --shadow:0 10px 30px rgba(0,0,0,.08);--shadow2:0 18px 60px rgba(0,0,0,.12);
+  --r:18px;--rs:12px;
+}
+html.dark{
+  --bg:#000000;--bg2:#101012;--bg3:#1b1b1f;--text:#f7f7f8;--muted:#b8b8c0;--line:rgba(255,255,255,.16);
+  --blue:#68b6ff;--green:#3be066;--red:#ff7272;--gold:#ffd84d;--purple:#c3a0ff;
+  --blueBg:#07182e;--greenBg:#061a0d;--redBg:#220909;--goldBg:#211703;--purpleBg:#160a2a;
+  --shadow:0 10px 30px rgba(0,0,0,.55);--shadow2:0 18px 60px rgba(0,0,0,.7);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:Inter,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.55;min-height:100vh;transition:.25s background,.25s color}
+button,input,select{font:inherit}
+a{color:inherit}.wrap{max-width:1160px;margin:auto;padding:0 28px}.hidden{display:none!important}
+.topbar{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.82);backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+html.dark .topbar{background:rgba(0,0,0,.82)}
+.nav{display:flex;align-items:center;justify-content:space-between;padding:18px 0;gap:20px}
+.logo{display:flex;flex-direction:column}.logo strong{font-size:22px;letter-spacing:-.04em}.logo span{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:var(--muted)}
+.nav-actions{display:flex;gap:10px;align-items:center}.theme{border:1px solid var(--line);background:var(--bg2);color:var(--text);border-radius:999px;padding:10px 14px;cursor:pointer}.wa{background:#25d366;color:#062411!important;text-decoration:none;border-radius:999px;padding:10px 16px;font-weight:700;font-size:13px}
+.hero{padding:66px 0 38px;text-align:center}.eyebrow{font-size:12px;text-transform:uppercase;letter-spacing:.18em;color:var(--blue);font-weight:800;margin-bottom:16px}.hero h1{font-size:clamp(38px,6vw,76px);line-height:1.02;letter-spacing:-.07em;margin-bottom:22px}.hero h1 em{font-style:normal;color:var(--blue)}.hero p{max-width:760px;margin:0 auto;color:var(--muted);font-size:18px}.hero b{color:var(--text)}
+.panel{background:var(--bg);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow);padding:26px}.audit-box{max-width:960px;margin:0 auto 42px}.form-row{display:grid;grid-template-columns:1fr auto;gap:12px;margin-bottom:18px}.url{width:100%;border:1.5px solid var(--line);background:var(--bg2);color:var(--text);border-radius:999px;padding:18px 22px;outline:none}.url:focus{border-color:var(--blue);box-shadow:0 0 0 4px rgba(4,87,200,.12)}.run{border:0;background:var(--text);color:var(--bg);border-radius:999px;padding:0 28px;font-weight:800;cursor:pointer}.run:disabled{opacity:.5;cursor:not-allowed}
+.modes{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.mode{border:1px solid var(--line);border-radius:16px;padding:18px;text-align:left;background:var(--bg2);cursor:pointer;transition:.18s transform,.18s border,.18s background}.mode:hover{transform:translateY(-1px)}.mode.active{border-color:var(--blue);background:var(--blueBg);box-shadow:0 0 0 3px rgba(4,87,200,.1)}.mode small{display:block;text-transform:uppercase;letter-spacing:.13em;color:var(--blue);font-weight:900;margin-bottom:8px}.mode strong{font-size:17px}.mode span{display:block;color:var(--muted);font-size:13px;margin-top:6px}
+.trust-row{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:22px auto 0}.pill{border:1px solid var(--line);border-radius:999px;background:var(--bg2);padding:7px 12px;font-size:12px;color:var(--muted)}
+.loading{max-width:960px;margin:32px auto}.log{height:210px;overflow:auto;background:var(--bg2);border:1px solid var(--line);border-radius:var(--rs);padding:18px;font-family:ui-monospace,Consolas,monospace;font-size:13px}.log div{padding:3px 0}.ok{color:var(--green)}.fail{color:var(--red)}.info{color:var(--blue)}
+.results{padding:30px 0 80px}.hero-result{display:grid;grid-template-columns:280px 1fr;gap:36px;align-items:center;margin-bottom:28px}.score-card{text-align:center;background:var(--bg2);border:1px solid var(--line);border-radius:28px;padding:34px 24px}.score{font-size:78px;line-height:1;font-weight:900;letter-spacing:-.07em}.score small{font-size:22px;color:var(--muted)}.grade{display:inline-block;margin-top:12px;border:1px solid var(--green);color:var(--green);border-radius:999px;padding:6px 14px;font-size:12px;font-weight:900}.result-title h2{font-size:36px;letter-spacing:-.05em;margin-bottom:12px}.result-title p{color:var(--muted);font-size:16px}.result-meta{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}.tag{font-size:12px;border-radius:999px;padding:7px 12px;border:1px solid var(--line);background:var(--bg2)}.tag.green{background:var(--greenBg);color:var(--green);border-color:rgba(20,122,61,.25)}.tag.red{background:var(--redBg);color:var(--red);border-color:rgba(192,57,43,.25)}.tag.blue{background:var(--blueBg);color:var(--blue);border-color:rgba(4,87,200,.25)}
+.section{margin-top:28px}.section h3{font-size:28px;letter-spacing:-.04em;margin-bottom:14px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}.metric{background:var(--bg2);border:1px solid var(--line);border-radius:var(--r);padding:22px}.metric .k{font-size:11px;text-transform:uppercase;letter-spacing:.14em;font-weight:900;margin-bottom:8px}.metric .v{font-size:38px;font-weight:900;letter-spacing:-.05em}.metric p{color:var(--muted);font-size:13px;margin-top:6px}.bar{height:6px;background:var(--bg3);border-radius:999px;margin-top:14px;overflow:hidden}.bar i{display:block;height:100%;background:var(--blue);border-radius:999px}
+.levels{display:grid;grid-template-columns:repeat(7,1fr);gap:10px}.level{background:var(--bg2);border:1px solid var(--line);border-radius:14px;padding:14px;text-align:center}.level strong{display:block;font-size:13px}.level b{display:block;font-size:26px;margin:4px 0}.level span{font-size:11px;color:var(--muted)}
+.signal-list{display:grid;gap:10px}.signal{display:grid;grid-template-columns:90px 1fr auto;gap:12px;align-items:start;background:var(--bg2);border:1px solid var(--line);border-radius:var(--rs);padding:16px}.signal-id{font-family:ui-monospace,Consolas,monospace;font-size:12px;color:var(--muted)}.signal-name{font-weight:800}.signal-evidence{font-size:13px;color:var(--muted);margin-top:4px}.badge{border-radius:999px;padding:5px 10px;font-size:11px;font-weight:900}.badge.pass{background:var(--greenBg);color:var(--green)}.badge.fail{background:var(--redBg);color:var(--red)}
+.actions{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}.action{border-radius:var(--r);padding:24px;border:1px solid var(--line);background:var(--bg2)}.action h4{font-size:20px;margin-bottom:8px}.action p{color:var(--muted);font-size:14px}.action ul{margin:16px 0 0 18px;color:var(--muted);font-size:14px}.action li{margin:7px 0}.action .btn{display:block;text-align:center;text-decoration:none;margin-top:18px;border-radius:999px;padding:12px 16px;font-weight:900;background:var(--text);color:var(--bg)}
+.capture{background:linear-gradient(135deg,var(--blueBg),var(--bg2));border:1px solid var(--line);border-radius:28px;padding:28px}.capture-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}.capture input,.capture select{border:1px solid var(--line);background:var(--bg);color:var(--text);border-radius:999px;padding:14px 16px;outline:none}.capture button{border:0;border-radius:999px;background:var(--blue);color:#fff;font-weight:900;cursor:pointer}.consent{grid-column:1/-1;font-size:12px;color:var(--muted)}.consent input{vertical-align:middle;margin-right:6px}.voice{display:flex;gap:18px;align-items:center;justify-content:space-between;background:var(--purpleBg);border:1px solid rgba(94,44,165,.2);border-radius:var(--r);padding:24px}.voice b{font-size:22px}.voice p{color:var(--muted);font-size:14px}.voice button{border:0;background:var(--purple);color:#fff;border-radius:999px;padding:13px 18px;font-weight:900;cursor:pointer;white-space:nowrap}
+.footer{border-top:1px solid var(--line);padding:26px 0;color:var(--muted);font-size:13px;text-align:center}.toast{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);background:var(--text);color:var(--bg);padding:12px 18px;border-radius:999px;box-shadow:var(--shadow2);font-weight:800;z-index:50}
+@media(max-width:850px){.form-row,.hero-result,.grid3,.grid2,.actions,.capture-grid{grid-template-columns:1fr}.modes{grid-template-columns:1fr}.levels{grid-template-columns:repeat(2,1fr)}.signal{grid-template-columns:1fr}.voice{flex-direction:column;align-items:flex-start}.wrap{padding:0 18px}.hero{padding-top:42px}}
+@media print{.topbar,.audit-box,.voice,.capture,.footer,.run,.theme,.wa{display:none!important}.results{padding:0}.panel{box-shadow:none}.wrap{max-width:100%;padding:0 20px}}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="wrap nav">
+    <div class="logo"><strong>Audit·AI™</strong><span>Premium Real Evidence Engine</span></div>
+    <div class="nav-actions">
+      <button class="theme" onclick="toggleTheme()">☾ Theme</button>
+      <a class="wa" href="https://api.whatsapp.com/send/?phone=40737123540&text=Hi%2C%20I%20want%20help%20with%20AUDIT-AI" target="_blank">WhatsApp</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero wrap">
+    <div class="eyebrow">Operational AI Visibility · Transparency · Readiness</div>
+    <h1>Your website is no longer only a website. <em>It is an AI source.</em></h1>
+    <p>Run a real evidence-based audit using your Cloudflare Worker. No fake scores. Every result must come from a measurable signal, endpoint, schema, header, or machine-readable file.</p>
+  </section>
+
+  <section class="wrap audit-box">
+    <div class="panel">
+      <div class="form-row">
+        <input id="urlInput" class="url" placeholder="https://yoursite.com" autocomplete="off" />
+        <button id="runBtn" class="run" onclick="runAudit()">Run Audit</button>
+      </div>
+      <div class="modes" id="modes">
+        <button class="mode" data-mode="0" onclick="setMode('0')"><small>0 · Free</small><strong>Quick Scan</strong><span>Fast visibility check and top gaps.</span></button>
+        <button class="mode" data-mode="1" onclick="setMode('1')"><small>1 · Pro</small><strong>Professional Audit</strong><span>Declaration, intent, and implementation signals.</span></button>
+        <button class="mode active" data-mode="2" onclick="setMode('2')"><small>2 · Master</small><strong>Premium Evidence Audit</strong><span>L0–L6 maturity, trust, proof and readiness.</span></button>
+      </div>
+      <div class="trust-row">
+        <span class="pill">Real Worker v1.2</span>
+        <span class="pill">Signal evidence</span>
+        <span class="pill">L0–L6 maturity</span>
+        <span class="pill">DIY / Support / Done For You</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="loading" class="wrap loading hidden">
+    <div class="panel">
+      <h3 style="margin-bottom:12px">Running operational audit...</h3>
+      <div id="log" class="log"></div>
+    </div>
+  </section>
+
+  <section id="results" class="wrap results hidden"></section>
+</main>
+
+<footer class="footer wrap">
+  AUDIT-AI™ · Powered by AiVenture / 5thElement.ai · Real Worker endpoint: aireadyauditapi.aipath512.workers.dev
+</footer>
+
+<script>
+const WORKER = "https://aireadyauditapi.aipath512.workers.dev/check";
+let selectedMode = "2";
+let lastAudit = null;
+
+function toggleTheme(){document.documentElement.classList.toggle('dark')}
+function setMode(mode){selectedMode=mode;document.querySelectorAll('.mode').forEach(b=>b.classList.toggle('active',b.dataset.mode===mode))}
+function normalizeUrl(v){v=String(v||'').trim();if(!v)return '';if(!/^https?:\/\//i.test(v))v='https://'+v;return v}
+function log(msg,cls='info'){const el=document.getElementById('log');const d=document.createElement('div');d.className=cls;d.textContent=msg;el.appendChild(d);el.scrollTop=el.scrollHeight}
+function esc(v){return String(v??'').replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;').replaceAll('"','&quot;').replaceAll("'",'&#039;')}
+function grade(score){return score>=95?'A+':score>=85?'A':score>=70?'B':score>=50?'C':'D'}
+
+async function runAudit(){
+  const input=document.getElementById('urlInput');
+  const target=normalizeUrl(input.value);
+  if(!target){input.focus();input.style.borderColor='var(--red)';setTimeout(()=>input.style.borderColor='',1000);return}
+  document.getElementById('loading').classList.remove('hidden');
+  document.getElementById('results').classList.add('hidden');
+  document.getElementById('results').innerHTML='';
+  document.getElementById('log').innerHTML='';
+  document.getElementById('runBtn').disabled=true;
+  log('Target: '+target);
+  log('Mode: '+selectedMode);
+  log('Calling Evidence Engine...');
+  try{
+    const res=await fetch(`${WORKER}?url=${encodeURIComponent(target)}&mode=${selectedMode}`);
+    if(!res.ok)throw new Error('Worker returned HTTP '+res.status);
+    const data=await res.json();
+    lastAudit=data;
+    log('Worker response received','ok');
+    log(`Signals checked: ${data.evidence_summary.total_signals_checked}`,'ok');
+    log(`Passed: ${data.evidence_summary.passed} | Failed: ${data.evidence_summary.failed}`,'ok');
+    render(data);
+  }catch(e){
+    log('Audit failed: '+e.message,'fail');
+    renderError(target,e);
+  }finally{document.getElementById('runBtn').disabled=false;}
+}
+
+function deriveScores(data){
+  const L=data.level_scores||{};
+  const avg=(arr)=>Math.round(arr.reduce((a,b)=>a+(b||0),0)/arr.length);
+  const visibility=avg([L.L1?.score,L.L2?.score,L.L4?.score]);
+  const transparency=avg([L.L3?.score,L.L5?.score,L.L6?.score]);
+  const readiness=avg([L.L0?.score,L.L1?.score,L.L2?.score,L.L3?.score,L.L4?.score,L.L5?.score,L.L6?.score]);
+  return {visibility,transparency,readiness};
+}
+
+function render(data){
+  document.getElementById('loading').classList.add('hidden');
+  const results=document.getElementById('results');
+  results.classList.remove('hidden');
+  const s=deriveScores(data);
+  const failed=(data.signals||[]).filter(x=>!x.pass);
+  const passed=(data.signals||[]).filter(x=>x.pass);
+  const levels=Object.entries(data.level_scores||{}).filter(([k])=>/^L\d$/.test(k));
+  results.innerHTML=`
+    <div class="hero-result">
+      <div class="score-card">
+        <div class="score">${data.ai_ready_score}<small>/100</small></div>
+        <span class="grade">${grade(data.ai_ready_score)} · ${esc(data.status)}</span>
+      </div>
+      <div class="result-title">
+        <h2>${esc(data.product)}</h2>
+        <p>${esc(data.summary)}</p>
+        <div class="result-meta">
+          <span class="tag blue">${esc(data.target)}</span>
+          <span class="tag green">${esc(data.maturity_level)} · ${esc(data.maturity_summary)}</span>
+          <span class="tag green">${data.evidence_summary.passed} passed</span>
+          <span class="tag ${data.evidence_summary.failed?'red':'green'}">${data.evidence_summary.failed} failed</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="section grid3">
+      ${metric('AI Visibility',s.visibility,'Can AI find, understand, and use this website as a source?','blue')}
+      ${metric('AI Transparency',s.transparency,'Can the organization evidence identity, proof, trust and governance?','green')}
+      ${metric('AI Readiness',s.readiness,'How prepared is the site across L0–L6 operational maturity?','purple')}
+    </div>
+
+    <div class="section">
+      <h3>L0–L6 Maturity Map</h3>
+      <div class="levels">${levels.map(([k,v])=>`<div class="level"><strong>${esc(k)}</strong><b>${v.score}</b><span>${v.passed}/${v.total} pass</span></div>`).join('')}</div>
+    </div>
+
+    <div class="section grid2">
+      <div class="panel">
+        <h3>Failed Signals</h3>
+        <div class="signal-list">${failed.length?failed.map(signal).join(''):'<div class="tag green">No failed measurable signals in this mode.</div>'}</div>
+      </div>
+      <div class="panel">
+        <h3>Recommendations</h3>
+        <div class="signal-list">${(data.recommendations||[]).map((r,i)=>`<div class="signal"><div class="signal-id">FIX-${i+1}</div><div><div class="signal-name">${esc(r)}</div><div class="signal-evidence">Generated from failed measurable signals.</div></div><span class="badge fail">FIX</span></div>`).join('')}</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>Choose Your Next Step</h3>
+      <div class="actions">
+        <div class="action"><h4>DIY</h4><p>Fix it yourself using the failed signal list.</p><ul><li>Checklist from real evidence</li><li>Repeat audit after changes</li><li>Best for technical founders</li></ul><a class="btn" href="#capture">Send me the DIY plan</a></div>
+        <div class="action"><h4>Support</h4><p>Get guided help to implement missing signals.</p><ul><li>Review call</li><li>Correction plan</li><li>Validation scan</li></ul><a class="btn" href="https://api.whatsapp.com/send/?phone=40737123540&text=Hi%2C%20I%20want%20SUPPORT%20for%20my%20AUDIT-AI%20result" target="_blank">Ask for support</a></div>
+        <div class="action"><h4>Done For You</h4><p>Let AiVenture deploy the AI-readable layer.</p><ul><li>Edge 1-Click deployment</li><li>Machine-readable files</li><li>Final validation report</li></ul><a class="btn" href="https://api.whatsapp.com/send/?phone=40737123540&text=Hi%2C%20I%20want%20DONE%20FOR%20YOU%20AI-READY%20deployment" target="_blank">Deploy it for me</a></div>
+      </div>
+    </div>
+
+    <div class="section voice">
+      <div><b>Free Voice AI Assistant</b><p>Let a 26-language Voice AI Assistant explain your score and the next best action.</p></div>
+      <button onclick="toast('Voice AI Assistant hook ready. Connect provider in v2.')">Try Voice Assistant</button>
+    </div>
+
+    <div id="capture" class="section capture">
+      <h3>Receive Your Full Report</h3>
+      <p style="color:var(--muted)">Enter email or WhatsApp. This v1 stores locally in the browser. Zoho CRM integration comes in the next backend step.</p>
+      <div class="capture-grid">
+        <input id="leadName" placeholder="Name" />
+        <input id="leadCompany" placeholder="Company" />
+        <input id="leadEmail" placeholder="Email" />
+        <input id="leadWa" placeholder="WhatsApp, e.g. +40737123540" />
+        <select id="leadNeed"><option>DIY</option><option>Support</option><option>Done For You</option></select>
+        <button onclick="saveLeadLocal()">Confirm & Save</button>
+        <label class="consent"><input id="leadConsent" type="checkbox" /> I agree to be contacted about this audit result.</label>
+      </div>
+    </div>
+
+    <div class="section panel">
+      <h3>Sample Passed Evidence</h3>
+      <div class="signal-list">${passed.slice(0,14).map(signal).join('')}</div>
+    </div>
+
+    <div class="section" style="text-align:center;display:flex;gap:10px;justify-content:center;flex-wrap:wrap">
+      <button class="theme" onclick="copySummary()">Copy Summary</button>
+      <button class="theme" onclick="window.print()">Print / PDF</button>
+      <button class="theme" onclick="location.reload()">Run Another Audit</button>
+    </div>
+  `;
+  results.scrollIntoView({behavior:'smooth'});
+}
+function metric(k,v,p,color){return `<div class="metric"><div class="k" style="color:var(--${color})">${k}</div><div class="v">${v}</div><p>${p}</p><div class="bar"><i style="width:${v}%;background:var(--${color})"></i></div></div>`}
+function signal(x){return `<div class="signal"><div class="signal-id">${esc(x.id)}</div><div><div class="signal-name">${esc(x.name)}</div><div class="signal-evidence">${esc(x.evidence)}</div></div><span class="badge ${x.pass?'pass':'fail'}">${x.status}</span></div>`}
+function renderError(target,e){document.getElementById('loading').classList.add('hidden');const r=document.getElementById('results');r.classList.remove('hidden');r.innerHTML=`<div class="panel"><h3>Audit failed</h3><p>Target: ${esc(target)}</p><p style="color:var(--red)">${esc(e.message)}</p></div>`}
+function saveLeadLocal(){
+  if(!document.getElementById('leadConsent').checked){toast('Consent is required.');return}
+  const lead={name:leadName.value,company:leadCompany.value,email:leadEmail.value,whatsapp:leadWa.value,need:leadNeed.value,audit:lastAudit,created_at:new Date().toISOString()};
+  localStorage.setItem('audit_ai_last_lead',JSON.stringify(lead));
+  toast('Lead saved locally. Next step: connect Zoho CRM Worker.');
+}
+function copySummary(){if(!lastAudit)return;const f=(lastAudit.signals||[]).filter(s=>!s.pass);const text=[`AUDIT-AI Report`,lastAudit.target,`Score: ${lastAudit.ai_ready_score}/100`,`Maturity: ${lastAudit.maturity_level}`,`Signals: ${lastAudit.evidence_summary.total_signals_checked}`,`Passed: ${lastAudit.evidence_summary.passed}`,`Failed: ${lastAudit.evidence_summary.failed}`,'',...f.map(s=>`${s.id} ${s.name}: ${s.evidence}`)].join('\n');navigator.clipboard.writeText(text);toast('Summary copied.')}
+function toast(msg){const t=document.createElement('div');t.className='toast';t.textContent=msg;document.body.appendChild(t);setTimeout(()=>t.remove(),2400)}
+</script>
+</body>
+</html>
