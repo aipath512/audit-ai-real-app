@@ -165,15 +165,48 @@ button{border:0;cursor:pointer;font-family:Inter,Arial,sans-serif}
       </div>
     </div>
     <div class="meta">
-      <strong>Version:</strong> v1.3 AI Everest<br>
+      <strong>Version:</strong> v1.4 AI Everest Modular<br>
       <strong>Worker:</strong> v1.5 Evidence Engine<br>
-      <strong>Current:</strong> <span id="now">loading...</span><br>
-      <strong>Last update:</strong> 2026-06-01 00:20 EEST<br>
+      <strong>Last update:</strong> 2026-06-01 — static versioned metadata<br>
       AEO · GEO · AIO · SEO
     </div>
   </div>
 </header>
 <!-- SECTION END: HEADER / LOGO + VERSION METADATA -->
+
+<!-- SECTION START: SECTION REGISTRY / MODULAR MAP + OWNERSHIP + CHANGE LOG -->
+<section id="section-registry" class="glossary">
+  <h2 class="sectionTitle">Section <em>Registry</em></h2>
+  <p class="small">This registry makes the page modular. Future updates should replace only the targeted section between its SECTION START and SECTION END comments, not the full page.</p>
+
+  <details open>
+    <summary>Modular editing rule</summary>
+    <p><strong>Rule:</strong> Every block has a stable section name, owner, purpose and change status. To modify the page safely, edit only the block between the matching SECTION START and SECTION END comments.</p>
+    <p><strong>Do not touch:</strong> Worker URL, audit rendering logic, visual CSS or schema blocks unless the change specifically targets that section.</p>
+  </details>
+
+  <div class="everestGrid">
+    <div class="everestItem"><strong>01 · Head</strong><p class="small">Owner: AiVenture. Purpose: metadata, fonts, CSS and baseline schema.</p></div>
+    <div class="everestItem"><strong>02 · Header</strong><p class="small">Owner: 5thElement.ai. Purpose: logo, version and stable update metadata.</p></div>
+    <div class="everestItem"><strong>03 · Audit UI</strong><p class="small">Owner: Audit·AI. Purpose: URL input, mode toggles, signal watch and rendered results.</p></div>
+    <div class="everestItem"><strong>04 · AI Everest</strong><p class="small">Owner: AiVenture. Purpose: ADI flagship/satellite network positioning.</p></div>
+    <div class="everestItem"><strong>05 · Offer</strong><p class="small">Owner: Commercial. Purpose: Free DIY, Support and Done For You offer ladder.</p></div>
+    <div class="everestItem"><strong>06 · Services</strong><p class="small">Owner: Commercial + Schema. Purpose: 25 human-visible services mirrored in schema.org.</p></div>
+    <div class="everestItem"><strong>07 · Innovations</strong><p class="small">Owner: Innovation Registry. Purpose: 8 AiVenture innovations with firm-owner explanations.</p></div>
+    <div class="everestItem"><strong>08 · Proof</strong><p class="small">Owner: Trust Layer. Purpose: SHA-256, OTS and Bitcoin block explanations.</p></div>
+    <div class="everestItem"><strong>09 · Footer</strong><p class="small">Owner: AiVenture. Purpose: contact, quick links, legal and network references.</p></div>
+    <div class="everestItem"><strong>10 · Schema</strong><p class="small">Owner: Machine Layer. Purpose: Organization, SoftwareApplication, DefinedTermSet, ItemList and OfferCatalog.</p></div>
+    <div class="everestItem"><strong>11 · JavaScript</strong><p class="small">Owner: Audit Engine UI. Purpose: Worker call, rendering and toggles.</p></div>
+    <div class="everestItem"><strong>Status</strong><p class="small">v1.4: live current date/time removed; static metadata retained; modular registry added.</p></div>
+  </div>
+
+  <details>
+    <summary>Change log</summary>
+    <p><strong>v1.3 AI Everest:</strong> Added ADI network positioning, 25 services, OfferCatalog, innovation glossary and proof terms.</p>
+    <p><strong>v1.4 AI Everest Modular:</strong> Removed live current date/time, added section registry, ownership map and change log for section-level maintenance.</p>
+  </details>
+</section>
+<!-- SECTION END: SECTION REGISTRY / MODULAR MAP + OWNERSHIP + CHANGE LOG -->
 
 <!-- SECTION START: HERO / PRIMARY VALUE PROPOSITION -->
 <section class="hero">
@@ -610,11 +643,6 @@ const WORKER="https://aireadyauditapi.aipath512.workers.dev/check";
 let MODE="0";
 let AUDIENCE="owner";
 let LAST=null;
-
-function updateClock(){
-  document.getElementById("now").textContent=new Date().toLocaleString("en-GB",{timeZone:"Europe/Bucharest"});
-}
-setInterval(updateClock,1000); updateClock();
 
 function setMode(m,btn){MODE=m;document.querySelectorAll(".modebar .pill").forEach(b=>b.classList.remove("active"));btn.classList.add("active")}
 function setAudience(a,btn){AUDIENCE=a;document.querySelectorAll(".audiencebar .pill").forEach(b=>b.classList.remove("active"));btn.classList.add("active");if(LAST)renderResults(LAST)}
