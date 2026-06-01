@@ -88,6 +88,15 @@ button{border:0;cursor:pointer;font-family:Inter,Arial,sans-serif}
 .proofList{font-size:12px;line-height:1.7;word-break:break-all}
 .small{font-size:13px;color:var(--muted)}
 .legal{border-top:1px solid var(--line);margin-top:28px;padding-top:18px;font-size:12px;color:var(--muted)}
+
+.everestGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:20px 0 34px}
+.everestItem{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px}
+.everestItem strong{display:block;margin-bottom:8px}
+.serviceGrid{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin-top:18px}
+.serviceItem{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;font-size:13px}
+.footerNote{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;margin:20px 0}
+@media(max-width:900px){.everestGrid,.serviceGrid{grid-template-columns:1fr}}
+
 @media(max-width:900px){
   .headerTop{flex-direction:column}.meta{text-align:left}.logoImg{width:100%;height:auto}
   h1{font-size:44px}.inputrow{border-radius:22px;flex-direction:column}.run{width:100%}
@@ -144,10 +153,10 @@ button{border:0;cursor:pointer;font-family:Inter,Arial,sans-serif}
       </div>
     </div>
     <div class="meta">
-      <strong>Version:</strong> v1.1 Complete<br>
-      <strong>Worker:</strong> v1.4 Evidence Engine<br>
+      <strong>Version:</strong> v1.3 AI Everest<br>
+      <strong>Worker:</strong> v1.5 Evidence Engine<br>
       <strong>Current:</strong> <span id="now">loading...</span><br>
-      <strong>Last update:</strong> 2026-05-31 21:25 EEST<br>
+      <strong>Last update:</strong> 2026-06-01 00:20 EEST<br>
       AEO · GEO · AIO · SEO
     </div>
   </div>
@@ -190,18 +199,223 @@ button{border:0;cursor:pointer;font-family:Inter,Arial,sans-serif}
 
 <section id="results" class="results"></section>
 
-<section id="business-glossary" class="glossary">
-  <h2 class="sectionTitle">Business <em>Glossary</em></h2>
-  <p class="small">Plain-language definitions for firm owners. This accordion content is visible in HTML and supported by DefinedTerm schema for AI systems.</p>
 
-  <details open><summary>AI Visibility — Can AI include your company in answers?</summary><p>AI Visibility is the ability of AI systems to find, understand, trust and use information about your company.</p><p><strong>5thelement.ai example:</strong> exposes AI-readable discovery, declaration, trust and proof signals.</p></details>
-  <details><summary>AI Discovery — Can AI find you?</summary><p>AI Discovery means AI crawlers can find your machine-readable entry points.</p><p><strong>Measured by:</strong> robots.txt, sitemap.xml, llms.txt.</p></details>
-  <details><summary>AI Understanding — Can AI understand what you do?</summary><p>AI Understanding means your content is structured clearly enough for AI systems to classify your business.</p><p><strong>Measured by:</strong> title, meta description, H1, JSON-LD, Organization Schema, Service Schema.</p></details>
-  <details><summary>AEO — Answer Engine Optimization</summary><p>AEO helps AI systems answer user questions using your company information.</p></details>
-  <details><summary>GEO — Generative Engine Optimization</summary><p>GEO helps generative AI describe your company accurately.</p></details>
-  <details><summary>AIO — AI Optimization</summary><p>AIO is the broader discipline of making a company understandable, usable and trusted by AI systems.</p></details>
-  <details><summary>AI Signals — Machine-readable business signals</summary><p>AI Signals are declarative files, headers, schemas and proof tokens that tell machine systems how to read, trust and use your website.</p></details>
-  <details><summary>AI Visibility Spectrum — How AI sees a website</summary><ol><li><strong>Crawlable:</strong> Can AI bots access the site?</li><li><strong>Readable:</strong> Can AI extract meaning?</li><li><strong>Citable:</strong> Can AI use the site as a source?</li><li><strong>Verifiable:</strong> Can AI verify proof and provenance?</li><li><strong>Actionable:</strong> Can AI agents execute workflows?</li></ol></details>
+<section id="business-glossary" class="glossary">
+  <h2 class="sectionTitle">AI Everest <em>Positioning</em></h2>
+  <p class="small">
+    This audit page is a satellite node of the AiVenture / 5thElement.ai internal AI Delivery Infrastructure network. 
+    5thElement.ai is the flagship authority node. Satellite sites such as eu-ai-audit.eu, eu-ai-ready.eu, eu-ai-act-ready.eu, eu-112.eu, aiventure.ro and client deployments should speak the same ADI language: discovery, declaration, answer readiness, trust, proof and operational readiness.
+  </p>
+
+  <div class="everestGrid">
+    <div class="everestItem">
+      <strong>Flagship Authority</strong>
+      <p class="small">5thElement.ai is the root brand and proof authority for AiVenture AI Delivery Infrastructure.</p>
+    </div>
+    <div class="everestItem">
+      <strong>Satellite Network</strong>
+      <p class="small">eu-ai-audit.eu and related sites act as specialized nodes connected to the same ADI doctrine.</p>
+    </div>
+    <div class="everestItem">
+      <strong>AI Signals</strong>
+      <p class="small">Each site should expose machine-readable signals for AI discovery, understanding, trust and answer use.</p>
+    </div>
+    <div class="everestItem">
+      <strong>Proof Layer</strong>
+      <p class="small">Innovation names, SHA-256 fingerprints, OTS anchors and Bitcoin blocks support provenance and prior-existence evidence.</p>
+    </div>
+  </div>
+
+  <details open>
+    <summary>What does this solve for a firm owner?</summary>
+    <p>Your website is no longer only a brochure for humans. It becomes a business source for AI systems.</p>
+    <p><strong>Old model:</strong> buyer → Google → website → human reads.</p>
+    <p><strong>AI-era model:</strong> buyer intent → AI system → global synthesis → answer, recommendation or shortlist.</p>
+    <p><strong>Business value:</strong> the firm becomes easier for AI to find, understand, trust and recommend.</p>
+  </details>
+
+  <details>
+    <summary>AI Visibility — Can AI include your company in answers?</summary>
+    <p>AI Visibility is the ability of AI systems to find, understand, trust and use information about your company.</p>
+    <p><strong>5thElement.ai example:</strong> exposes robots.txt, sitemap.xml, llms.txt, ai.json, authority.json, intents.json, ai-proof.json and trust-state.json as machine-readable signals.</p>
+  </details>
+
+  <details>
+    <summary>AI Discovery — Can AI find you?</summary>
+    <p>AI Discovery means AI crawlers can find your machine-readable entry points.</p>
+    <p><strong>Measured by:</strong> robots.txt, sitemap.xml, llms.txt and AI crawler allow-lane rules.</p>
+  </details>
+
+  <details>
+    <summary>AI Understanding — Can AI understand what you do?</summary>
+    <p>AI Understanding means the site explains the company clearly enough for AI systems to classify it correctly.</p>
+    <p><strong>Measured by:</strong> title, meta description, H1, JSON-LD, Organization schema, Service schema, FAQ schema and semantic language.</p>
+  </details>
+
+  <details>
+    <summary>AEO — Answer Engine Optimization</summary>
+    <p>AEO helps AI systems answer user questions using your company information.</p>
+    <p><strong>Business question:</strong> Can AI answer with us when buyers ask for our category?</p>
+  </details>
+
+  <details>
+    <summary>GEO — Generative Engine Optimization</summary>
+    <p>GEO helps generative AI describe your company accurately and consistently.</p>
+    <p><strong>Business question:</strong> Can AI explain who we are without distortion?</p>
+  </details>
+
+  <details>
+    <summary>AIO — AI Optimization</summary>
+    <p>AIO is the broader discipline of making a company readable, usable and trusted by AI systems.</p>
+    <p><strong>Business question:</strong> Can AI understand, trust and use our company as a reliable source?</p>
+  </details>
+
+  <details>
+    <summary>AI Signals — Machine-readable business signals</summary>
+    <p>AI Signals are declarative files, headers, schemas and proof tokens that tell machine systems how to read, trust and use your website.</p>
+    <p><strong>Examples:</strong> llms.txt, ai.json, authority.json, intents.json, ai-proof.json, trust-state.json, schema.org JSON-LD and HTTP proof headers.</p>
+  </details>
+</section>
+
+<section id="offer-layer" class="glossary">
+  <h2 class="sectionTitle">Offer <em>Architecture</em></h2>
+  <p class="small">The same engine supports a free diagnostic, guided support and full deployment. The visual audit is the entry door. The ADI implementation is the paid infrastructure.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="cardLabel">Free DIY</div>
+      <h3>AI Visibility Quick Scan</h3>
+      <p>Run the audit, understand the missing signals and fix the basic discovery layer yourself.</p>
+      <p class="small"><strong>Best for:</strong> curious firm owners and agencies testing the concept.</p>
+    </div>
+    <div class="card">
+      <div class="cardLabel">Support</div>
+      <h3>Guided AI Readiness</h3>
+      <p>Receive help interpreting the results and implementing discovery, declaration, trust and answer-readiness layers.</p>
+      <p class="small"><strong>Best for:</strong> teams that can implement but need a clear map.</p>
+    </div>
+    <div class="card">
+      <div class="cardLabel">Done For You</div>
+      <h3>ADI Deployment</h3>
+      <p>AiVenture deploys and validates the full AI-readable infrastructure: signals, files, proof, headers and governance.</p>
+      <p class="small"><strong>Best for:</strong> firms that want a complete outcome without technical complexity.</p>
+    </div>
+  </div>
+</section>
+
+<section id="service-catalog" class="glossary">
+  <h2 class="sectionTitle">25 AI Visibility <em>Services</em></h2>
+  <p class="small">These are the 25 most important service elements exposed both for humans and through schema.org OfferCatalog.</p>
+  <div class="serviceGrid">
+    <div class="serviceItem"><strong>1. AI Visibility Audit</strong><br>Checks whether AI can find, understand and trust the site.</div>
+    <div class="serviceItem"><strong>2. AI Discovery Setup</strong><br>Deploys robots.txt, sitemap.xml and llms.txt.</div>
+    <div class="serviceItem"><strong>3. AI Understanding Layer</strong><br>Adds semantic structure and schema.</div>
+    <div class="serviceItem"><strong>4. AI Declaration Layer</strong><br>Creates ai.json, authority.json and entities.</div>
+    <div class="serviceItem"><strong>5. AI Answer Readiness</strong><br>Maps buyer questions into answer-ready structures.</div>
+    <div class="serviceItem"><strong>6. AI Trust & Proof Layer</strong><br>Adds proof, provenance and trust-state signals.</div>
+    <div class="serviceItem"><strong>7. AI Operational Readiness</strong><br>Adds governance and operational signals.</div>
+    <div class="serviceItem"><strong>8. 1-Click Edge AI Readiness</strong><br>Adds AI signals without rebuilding the site.</div>
+    <div class="serviceItem"><strong>9. AI Proof Header Setup</strong><br>Advertises proof files through HTTP headers.</div>
+    <div class="serviceItem"><strong>10. AI Signal Pack</strong><br>Deploys a complete discovery and trust pack.</div>
+    <div class="serviceItem"><strong>11. AEO Optimization</strong><br>Improves answer-engine readiness.</div>
+    <div class="serviceItem"><strong>12. GEO Optimization</strong><br>Improves generative AI representation.</div>
+    <div class="serviceItem"><strong>13. AIO Optimization</strong><br>Improves overall AI readability and trust.</div>
+    <div class="serviceItem"><strong>14. AI Sonar Monitoring</strong><br>Measures AI visibility over time.</div>
+    <div class="serviceItem"><strong>15. ADI Deployment</strong><br>Deploys AI Delivery Infrastructure.</div>
+    <div class="serviceItem"><strong>16. AI Trust Protocol</strong><br>Implements trust and proof signals.</div>
+    <div class="serviceItem"><strong>17. B2B Indirect Marketing</strong><br>Positions firms for AI selection.</div>
+    <div class="serviceItem"><strong>18. Economic Twins Design</strong><br>Creates structured business representations.</div>
+    <div class="serviceItem"><strong>19. Mockingbird Handshake</strong><br>Adds structured AI-site communication patterns.</div>
+    <div class="serviceItem"><strong>20. EU AI Act Readiness Signals</strong><br>Adds governance and transparency signals.</div>
+    <div class="serviceItem"><strong>21. Machine-Readable Governance</strong><br>Creates governance.json, policy.json and trust-state.json.</div>
+    <div class="serviceItem"><strong>22. Intent Architecture</strong><br>Creates intents.json and buyer-intent maps.</div>
+    <div class="serviceItem"><strong>23. Entity Graph Setup</strong><br>Defines company, founder, offers and proof assets.</div>
+    <div class="serviceItem"><strong>24. Proof Registry Setup</strong><br>Publishes SHA-256 and OTS proof references.</div>
+    <div class="serviceItem"><strong>25. Done For You Deployment</strong><br>Complete ADI implementation and validation.</div>
+  </div>
+</section>
+
+<section id="innovation-glossary-footer" class="glossary">
+  <h2 class="sectionTitle">Innovation <em>Glossary</em></h2>
+  <p class="small">Plain-language explanations for firm owners. The proof values below are public fingerprints and timestamp references for the AiVenture innovation layer.</p>
+
+  <details open>
+    <summary>Web-AI B2B Network™</summary>
+    <p><strong>Firm owner meaning:</strong> Makes your company visible inside AI systems, not only traditional search engines.</p>
+    <p><strong>Business value:</strong> AI can discover your company and include it in answers when buyers ask for solutions.</p>
+    <p><strong>Proof:</strong> SHA-256 fingerprint: 4d708888ebe4dfb79f36052f6c34735d4516f5501f5402126c300e76892ad5a6</p>
+  </details>
+
+  <details>
+    <summary>B2B Indirect Marketing™</summary>
+    <p><strong>Firm owner meaning:</strong> Marketing for the AI era, where the goal is not only to get clicks but to become the company AI recommends.</p>
+    <p><strong>Business value:</strong> SEO gets you found. AI-era indirect marketing helps you get chosen.</p>
+    <p><strong>Proof:</strong> SHA-256 fingerprint: 217881f60755e3701496b1cb8690d0fd807362f64f478618385ae23318387499</p>
+  </details>
+
+  <details>
+    <summary>AI Trust Protocol™</summary>
+    <p><strong>Firm owner meaning:</strong> A trust layer that helps AI systems decide whether your company information is credible.</p>
+    <p><strong>Business value:</strong> Higher probability of being trusted, cited and recommended by AI systems.</p>
+    <p><strong>Proof:</strong> SHA-256 fingerprint: 2395f0b7bd8c3d319a555c0c8638544e343f26d38d1bde28de84d15516990b5e</p>
+  </details>
+
+  <details>
+    <summary>1-Click Edge Injector™</summary>
+    <p><strong>Firm owner meaning:</strong> Adds AI-readable infrastructure to a website without rebuilding it.</p>
+    <p><strong>Business value:</strong> No redesign. No migration. No CMS replacement. Your current site stays in place.</p>
+    <p><strong>Proof:</strong> SHA-256 fingerprint: 697fe1310d5b453ac71c637a2d5af655221f4e0bbc1f3117c023fa9a0444f826</p>
+  </details>
+
+  <details>
+    <summary>B2B Economic Twins™</summary>
+    <p><strong>Firm owner meaning:</strong> Structured digital representations of your business offers, services, departments or operations.</p>
+    <p><strong>Business value:</strong> AI can understand how your business works, not only read static text.</p>
+    <p><strong>Proof:</strong> SHA-256 fingerprint: 0716ca58759f65f4760259efe71e99eecf5d22d7471ce4ef7107b49a86c0a077</p>
+  </details>
+
+  <details>
+    <summary>AI Delivery Infrastructure / ADI™</summary>
+    <p><strong>Firm owner meaning:</strong> Infrastructure that makes your business discoverable, understandable, trustworthy and actionable for AI systems.</p>
+    <p><strong>Business value:</strong> Your website becomes an AI-readable business node, not only a brochure.</p>
+    <p><strong>Proof:</strong> SHA-256 fingerprint: 31aa7a564ad93f21752e6c8d1b31f105688156182cfb1bcd6fb65ef1c756bc36</p>
+  </details>
+
+  <details>
+    <summary>AI Sonar™</summary>
+    <p><strong>Firm owner meaning:</strong> Measures whether AI can find, understand, trust and recommend your company.</p>
+    <p><strong>Business value:</strong> Google Analytics measures humans. AI Sonar measures AI visibility.</p>
+    <p><strong>Proof:</strong> SHA-256 fingerprint: c57529c8c8bfb010483fc00d4cefece739fdf7c624b8cd1bb6b26f9455f156b5 · OTS Bitcoin block 949375</p>
+  </details>
+
+  <details>
+    <summary>Mockingbird Handshake™</summary>
+    <p><strong>Firm owner meaning:</strong> A structured communication pattern between websites and AI systems.</p>
+    <p><strong>Business value:</strong> AI does not have to guess what your company does. The site tells AI directly.</p>
+    <p><strong>Proof:</strong> SHA-256 fingerprint: fb3882881d15dd05056140c7928b8b94e2a323e0d0c53dd5fc1c411bc2b16a22 · OTS Bitcoin block 949346</p>
+  </details>
+</section>
+
+<section id="proof-terms" class="glossary">
+  <h2 class="sectionTitle">Proof Terms <em>Explained</em></h2>
+
+  <details open>
+    <summary>SHA-256 — Digital Fingerprint</summary>
+    <p><strong>Simple meaning:</strong> A unique digital fingerprint for a file, document or definition.</p>
+    <p><strong>Why it matters:</strong> If one single character changes, the fingerprint changes. This helps prove that the document has not been altered.</p>
+  </details>
+
+  <details>
+    <summary>OTS / OpenTimestamps — Proof of Date</summary>
+    <p><strong>Simple meaning:</strong> A timestamp proof showing that a file existed at a specific moment.</p>
+    <p><strong>Why it matters:</strong> It helps prove prior existence of an innovation, definition, policy or evidence file.</p>
+  </details>
+
+  <details>
+    <summary>Bitcoin Block — Public Time Anchor</summary>
+    <p><strong>Simple meaning:</strong> A public, hard-to-change timestamp anchor.</p>
+    <p><strong>Why it matters:</strong> Once a proof is anchored, nobody can easily rewrite the date later.</p>
+  </details>
 </section>
 
 <footer class="footer">
@@ -223,37 +437,137 @@ button{border:0;cursor:pointer;font-family:Inter,Arial,sans-serif}
     </div>
     <div>
       <h3>Legal</h3>
-      <p><a href="#terms">Terms & Conditions</a></p>
-      <p><a href="#privacy">Privacy / GDPR Policy</a></p>
-      <p><a href="#cookies">Cookie Policy</a></p>
-      <p><a href="#business-glossary">Business Glossary</a></p>
+      <p><a href="#audit-ai-terms">Terms & Conditions</a></p>
+      <p><a href="#audit-ai-privacy">Privacy / GDPR Policy</a></p>
+      <p><a href="#audit-ai-cookies">Cookie Policy</a></p>
+      <p><a href="#innovation-glossary-footer">Innovation Glossary</a></p>
     </div>
   </div>
 
-  <h3>Innovation Proof Layer</h3>
-  <div class="proofList">
-    <p><strong>Web-AI B2B Network:</strong> 4d708888ebe4dfb79f36052f6c34735d4516f5501f5402126c300e76892ad5a6</p>
-    <p><strong>B2B Indirect Marketing:</strong> 217881f60755e3701496b1cb8690d0fd807362f64f478618385ae23318387499</p>
-    <p><strong>AI-Trust Protocol:</strong> 2395f0b7bd8c3d319a555c0c8638544e343f26d38d1bde28de84d15516990b5e</p>
-    <p><strong>1-Click Edge Injector:</strong> 697fe1310d5b453ac71c637a2d5af655221f4e0bbc1f3117c023fa9a0444f826</p>
-    <p><strong>B2B Economic Twins:</strong> 0716ca58759f65f4760259efe71e99eecf5d22d7471ce4ef7107b49a86c0a077</p>
-    <p><strong>AI Delivery Infrastructure:</strong> 31aa7a564ad93f21752e6c8d1b31f105688156182cfb1bcd6fb65ef1c756bc36</p>
-    <p><strong>AI Sonar™:</strong> c57529c8c8bfb010483fc00d4cefece739fdf7c624b8cd1bb6b26f9455f156b5 · OTS Bitcoin block 949375</p>
-    <p><strong>Mockingbird Handshake™:</strong> fb3882881d15dd05056140c7928b8b94e2a323e0d0c53dd5fc1c411bc2b16a22 · OTS Bitcoin block 949346</p>
+  <div id="audit-ai-terms" class="legal">
+    <strong>Terms & Conditions:</strong> This tool provides technical and informational audit results. It does not provide legal certification, regulatory certification, guaranteed AI ranking or guaranteed inclusion in AI-generated answers.
   </div>
-
-  <div id="terms" class="legal">
-    <strong>Terms & Conditions:</strong> This tool provides technical and informational audit results. It does not provide legal certification, regulatory certification, or guaranteed AI ranking.
+  <div id="audit-ai-privacy" class="legal">
+    <strong>Privacy / GDPR Policy:</strong> This static version checks public URLs. Any future email, WhatsApp, CRM or report delivery feature should be used only for audit delivery, support and follow-up.
   </div>
-  <div id="privacy" class="legal">
-    <strong>Privacy / GDPR Policy:</strong> This demo audit runs a public URL check. Contact details entered in future versions should be processed only for audit delivery, follow-up, and support requests.
-  </div>
-  <div id="cookies" class="legal">
-    <strong>Cookie Policy:</strong> This static version does not require marketing cookies. Future analytics or CRM integrations should be disclosed clearly before activation.
+  <div id="audit-ai-cookies" class="legal">
+    <strong>Cookie Policy:</strong> This static version does not require marketing cookies. Any future analytics, CRM or advertising integration should be disclosed before activation.
   </div>
 </footer>
 
-</div>
+<script type="application/ld+json" id="ai-everest-schema">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://5thelement.ai/#organization",
+      "name": "5thElement.ai",
+      "alternateName": ["5thelement.ai", "AiVenture AI Delivery Infrastructure", "ADI"],
+      "url": "https://5thelement.ai/",
+      "email": "contact@5thelement.ai",
+      "telephone": "+40737123540",
+      "parentOrganization": {
+        "@type": "Organization",
+        "name": "AiVenture SRL",
+        "url": "https://aiventure.ro/"
+      },
+      "knowsAbout": [
+        "AI Delivery Infrastructure",
+        "Artificial Intelligence Delivery Infrastructure",
+        "AI Visibility",
+        "AI Signals",
+        "AEO",
+        "GEO",
+        "AIO",
+        "AI Trust",
+        "AI Readiness",
+        "Machine-readable governance",
+        "OpenTimestamps",
+        "SHA-256",
+        "AI Sonar",
+        "Mockingbird Handshake"
+      ]
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Audit-AI",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "A real AI visibility audit application that checks whether a website is discoverable, understandable, trustworthy and operationally ready for AI systems.",
+      "provider": { "@id": "https://5thelement.ai/#organization" },
+      "featureList": [
+        "AI Discovery audit",
+        "AI Understanding audit",
+        "AI Declaration audit",
+        "AI Answer Readiness audit",
+        "AI Trust and Proof audit",
+        "AI Operational Readiness audit"
+      ]
+    },
+    {
+      "@type": "DefinedTermSet",
+      "name": "5thElement.ai Innovation Glossary",
+      "url": "https://audit-ai-real-app.pages.dev/#innovation-glossary-footer",
+      "hasDefinedTerm": [
+        { "@type": "DefinedTerm", "name": "Web-AI B2B Network", "description": "A way to make a company visible inside AI systems, not only inside traditional search engines." },
+        { "@type": "DefinedTerm", "name": "B2B Indirect Marketing", "description": "A marketing approach designed to make AI systems select and recommend a company during buyer decisions." },
+        { "@type": "DefinedTerm", "name": "AI Trust Protocol", "description": "A framework that helps AI systems evaluate whether company information is trustworthy." },
+        { "@type": "DefinedTerm", "name": "1-Click Edge Injector", "description": "Technology that adds AI-readable signals to a website without rebuilding it." },
+        { "@type": "DefinedTerm", "name": "B2B Economic Twins", "description": "Structured digital business representations that help AI systems understand offers, services, departments and operations." },
+        { "@type": "DefinedTerm", "name": "AI Delivery Infrastructure", "alternateName": "ADI", "description": "Infrastructure that helps AI systems discover, understand, trust and act on company information." },
+        { "@type": "DefinedTerm", "name": "AI Sonar", "description": "A monitoring system that measures whether AI can find, understand, trust and recommend a company." },
+        { "@type": "DefinedTerm", "name": "Mockingbird Handshake", "description": "A structured communication pattern between websites and AI systems for machine-to-machine understanding." },
+        { "@type": "DefinedTerm", "name": "SHA-256", "description": "A digital fingerprint that proves a file or definition is exactly the same as when it was recorded." },
+        { "@type": "DefinedTerm", "name": "OpenTimestamps", "alternateName": "OTS", "description": "A timestamp proof showing that a file or definition existed at a specific moment in time." },
+        { "@type": "DefinedTerm", "name": "Bitcoin Block", "description": "A public immutable timestamp anchor used to prove that a recorded fingerprint existed at a certain point in history." }
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "AiVenture ADI Satellite Network",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "5thelement.ai", "url": "https://5thelement.ai/", "description": "Flagship authority and ADI root." },
+        { "@type": "ListItem", "position": 2, "name": "eu-ai-audit.eu", "url": "https://eu-ai-audit.eu/", "description": "AI audit and validation satellite node." },
+        { "@type": "ListItem", "position": 3, "name": "aiventure.ro", "url": "https://aiventure.ro/", "description": "AiVenture company and Romanian infrastructure node." },
+        { "@type": "ListItem", "position": 4, "name": "eu-ai-ready.eu", "url": "https://eu-ai-ready.eu/", "description": "AI readiness satellite node." },
+        { "@type": "ListItem", "position": 5, "name": "eu-ai-act-ready.eu", "url": "https://eu-ai-act-ready.eu/", "description": "EU AI Act readiness satellite node." }
+      ]
+    },
+    {
+      "@type": "OfferCatalog",
+      "name": "5thElement.ai AI Visibility Services",
+      "itemListElement": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Visibility Audit", "description": "Checks whether AI systems can find, understand, trust and use a company website." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Discovery Setup", "description": "Deploys robots.txt, sitemap.xml and llms.txt discovery signals." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Understanding Layer", "description": "Adds semantic structure, JSON-LD and clear entity definitions." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Declaration Layer", "description": "Creates ai.json, authority.json and entity declarations." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Answer Readiness", "description": "Maps buyer intents and questions into machine-readable answer structures." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Trust & Proof Layer", "description": "Adds proof, provenance, trust-state and authority signals." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Operational Readiness", "description": "Adds governance and operational AI readiness signals." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "1-Click Edge AI Readiness", "description": "Adds AI-readable signals at the Edge without rebuilding the website." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Proof Header Setup", "description": "Advertises proof files through HTTP headers and Link relations." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Signal Pack", "description": "Deploys a complete package of machine-readable AI discovery and trust files." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AEO Optimization", "description": "Improves readiness for answer engines and AI-generated answers." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "GEO Optimization", "description": "Improves how generative AI describes the company." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AIO Optimization", "description": "Improves the company's overall machine readability and AI trust." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Sonar Monitoring", "description": "Measures AI visibility and readiness over time." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ADI Deployment", "description": "Deploys AI Delivery Infrastructure for AI-readable business presence." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Trust Protocol Implementation", "description": "Adds trust, proof and provenance signals for AI systems." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "B2B Indirect Marketing System", "description": "Positions a firm to be selected by AI during buyer decision moments." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Economic Twins Design", "description": "Creates structured business representations for AI agents." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mockingbird Handshake Integration", "description": "Adds structured communication patterns between a site and AI systems." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "EU AI Act Readiness Signals", "description": "Adds machine-readable governance and transparency signals for readiness workflows." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Machine-Readable Governance", "description": "Creates governance.json, policy.json and trust-state.json." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Intent Architecture", "description": "Creates intents.json and buyer-question maps." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Entity Graph Setup", "description": "Creates entity declarations for company, founder, offers and proof assets." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Proof Registry Setup", "description": "Publishes proof references, SHA-256 fingerprints and OTS anchors." } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Done For You AI Readiness Deployment", "description": "Full deployment of AI-readable discovery, declaration, trust and readiness infrastructure." } }
+      ]
+    }
+  ]
+}
+</script>
 
 <script>
 const WORKER="https://aireadyauditapi.aipath512.workers.dev/check";
@@ -281,7 +595,7 @@ async function runAudit(){
   document.getElementById("stream").innerHTML="";
   document.getElementById("watchTarget").textContent=target;
   document.getElementById("watchCount").textContent="0 checked";
-  logLine("Calling real Worker v1.4: "+escapeHtml(target));
+  logLine("Calling real Worker v1.5: "+escapeHtml(target));
 
   const res=await fetch(WORKER+"?url="+encodeURIComponent(target)+"&mode="+MODE);
   const data=await res.json();
@@ -334,269 +648,6 @@ function buildBusinessScores(scores){
 }
 function toggleDetails(code){const el=document.getElementById("details-"+code);el.style.display=el.style.display==="block"?"none":"block"}
 </script>
-<!-- FOOTER SAFE ADDITION v1.0 — 5thElement.ai Innovation Glossary + Proof Layer -->
-<section id="innovation-glossary-footer" style="margin:80px auto 0; padding:48px 0 0; border-top:1px solid var(--line,#e3e3e8); max-width:1180px;">
 
-  <h2 class="sectionTitle" style="font-family:'Playfair Display',serif; font-size:34px; margin:0 0 20px;">
-    Innovation <em style="color:var(--blue,#005bbb);">Glossary</em>
-  </h2>
-
-  <p class="small" style="max-width:760px; margin-bottom:24px; color:var(--muted,#666);">
-    Plain-language explanations for firm owners. Technical proof is included only to show that each innovation has a public fingerprint and timestamp reference.
-  </p>
-
-  <details open style="background:var(--panel,#f7f7f9); border:1px solid var(--line,#e3e3e8); border-radius:18px; padding:18px 20px; margin-bottom:12px;">
-    <summary><strong>Web-AI B2B Network™</strong></summary>
-    <p><strong>Firm owner meaning:</strong> Makes your company visible inside AI systems, not only traditional search engines.</p>
-    <p><strong>Business value:</strong> AI can discover your company and include it in answers when buyers ask for solutions.</p>
-    <p><strong>Proof:</strong> SHA-256 fingerprint: 4d708888ebe4dfb79f36052f6c34735d4516f5501f5402126c300e76892ad5a6</p>
-  </details>
-
-  <details style="background:var(--panel,#f7f7f9); border:1px solid var(--line,#e3e3e8); border-radius:18px; padding:18px 20px; margin-bottom:12px;">
-    <summary><strong>B2B Indirect Marketing™</strong></summary>
-    <p><strong>Firm owner meaning:</strong> Marketing for the AI era, where the goal is not only to get clicks but to become the company AI recommends.</p>
-    <p><strong>Business value:</strong> SEO gets you found. AI-era indirect marketing helps you get chosen.</p>
-    <p><strong>Proof:</strong> SHA-256 fingerprint: 217881f60755e3701496b1cb8690d0fd807362f64f478618385ae23318387499</p>
-  </details>
-
-  <details style="background:var(--panel,#f7f7f9); border:1px solid var(--line,#e3e3e8); border-radius:18px; padding:18px 20px; margin-bottom:12px;">
-    <summary><strong>AI Trust Protocol™</strong></summary>
-    <p><strong>Firm owner meaning:</strong> A trust layer that helps AI systems decide whether your company information is credible.</p>
-    <p><strong>Business value:</strong> Higher probability of being trusted, cited, and recommended by AI systems.</p>
-    <p><strong>Proof:</strong> SHA-256 fingerprint: 2395f0b7bd8c3d319a555c0c8638544e343f26d38d1bde28de84d15516990b5e</p>
-  </details>
-
-  <details style="background:var(--panel,#f7f7f9); border:1px solid var(--line,#e3e3e8); border-radius:18px; padding:18px 20px; margin-bottom:12px;">
-    <summary><strong>1-Click Edge Injector™</strong></summary>
-    <p><strong>Firm owner meaning:</strong> Adds AI-readable infrastructure to a website without rebuilding it.</p>
-    <p><strong>Business value:</strong> No redesign. No migration. No CMS replacement. Your current site stays in place.</p>
-    <p><strong>Proof:</strong> SHA-256 fingerprint: 697fe1310d5b453ac71c637a2d5af655221f4e0bbc1f3117c023fa9a0444f826</p>
-  </details>
-
-  <details style="background:var(--panel,#f7f7f9); border:1px solid var(--line,#e3e3e8); border-radius:18px; padding:18px 20px; margin-bottom:12px;">
-    <summary><strong>B2B Economic Twins™</strong></summary>
-    <p><strong>Firm owner meaning:</strong> Structured digital representations of your business offers, services, departments, or operations.</p>
-    <p><strong>Business value:</strong> AI can understand how your business works, not only read static text.</p>
-    <p><strong>Proof:</strong> SHA-256 fingerprint: 0716ca58759f65f4760259efe71e99eecf5d22d7471ce4ef7107b49a86c0a077</p>
-  </details>
-
-  <details style="background:var(--panel,#f7f7f9); border:1px solid var(--line,#e3e3e8); border-radius:18px; padding:18px 20px; margin-bottom:12px;">
-    <summary><strong>AI Delivery Infrastructure / ADI™</strong></summary>
-    <p><strong>Firm owner meaning:</strong> Infrastructure that makes your business discoverable, understandable, trustworthy, and actionable for AI systems.</p>
-    <p><strong>Business value:</strong> Your website becomes an AI-readable business node, not only a brochure.</p>
-    <p><strong>Proof:</strong> SHA-256 fingerprint: 31aa7a564ad93f21752e6c8d1b31f105688156182cfb1bcd6fb65ef1c756bc36</p>
-  </details>
-
-  <details style="background:var(--panel,#f7f7f9); border:1px solid var(--line,#e3e3e8); border-radius:18px; padding:18px 20px; margin-bottom:12px;">
-    <summary><strong>AI Sonar™</strong></summary>
-    <p><strong>Firm owner meaning:</strong> Measures whether AI can find, understand, trust, and recommend your company.</p>
-    <p><strong>Business value:</strong> Google Analytics measures humans. AI Sonar measures AI visibility.</p>
-    <p><strong>Proof:</strong> SHA-256 fingerprint: c57529c8c8bfb010483fc00d4cefece739fdf7c624b8cd1bb6b26f9455f156b5 · OTS Bitcoin block 949375</p>
-  </details>
-
-  <details style="background:var(--panel,#f7f7f9); border:1px solid var(--line,#e3e3e8); border-radius:18px; padding:18px 20px; margin-bottom:12px;">
-    <summary><strong>Mockingbird Handshake™</strong></summary>
-    <p><strong>Firm owner meaning:</strong> A structured communication pattern between websites and AI systems.</p>
-    <p><strong>Business value:</strong> AI does not have to guess what your company does. The site tells AI directly.</p>
-    <p><strong>Proof:</strong> SHA-256 fingerprint: fb3882881d15dd05056140c7928b8b94e2a323e0d0c53dd5fc1c411bc2b16a22 · OTS Bitcoin block 949346</p>
-  </details>
-
-  <h2 class="sectionTitle" style="font-family:'Playfair Display',serif; font-size:34px; margin:54px 0 20px;">
-    Proof Terms <em style="color:var(--blue,#005bbb);">Explained</em>
-  </h2>
-
-  <details open style="background:var(--panel,#f7f7f9); border:1px solid var(--line,#e3e3e8); border-radius:18px; padding:18px 20px; margin-bottom:12px;">
-    <summary><strong>SHA-256 — Digital Fingerprint</strong></summary>
-    <p><strong>Simple meaning:</strong> A unique digital fingerprint for a file, document, or definition.</p>
-    <p><strong>Why it matters:</strong> If one single character changes, the fingerprint changes. This helps prove that the document has not been altered.</p>
-  </details>
-
-  <details style="background:var(--panel,#f7f7f9); border:1px solid var(--line,#e3e3e8); border-radius:18px; padding:18px 20px; margin-bottom:12px;">
-    <summary><strong>OTS / OpenTimestamps — Proof of Date</strong></summary>
-    <p><strong>Simple meaning:</strong> A timestamp proof showing that a file existed at a specific moment.</p>
-    <p><strong>Why it matters:</strong> It helps prove prior existence of an innovation, definition, policy, or evidence file.</p>
-  </details>
-
-  <details style="background:var(--panel,#f7f7f9); border:1px solid var(--line,#e3e3e8); border-radius:18px; padding:18px 20px; margin-bottom:12px;">
-    <summary><strong>Bitcoin Block — Public Time Anchor</strong></summary>
-    <p><strong>Simple meaning:</strong> A public, hard-to-change timestamp anchor.</p>
-    <p><strong>Why it matters:</strong> Once a proof is anchored, nobody can easily rewrite the date later.</p>
-  </details>
-
-  <footer style="margin-top:54px; padding:36px 0 0; border-top:1px solid var(--line,#e3e3e8);">
-    <div style="display:grid; grid-template-columns:2fr 1fr 1fr; gap:24px;">
-      <div>
-        <h3>5thElement.ai / AiVenture SRL</h3>
-        <p class="small" style="color:var(--muted,#666);">
-          AI Delivery Infrastructure, AI Visibility, AI Trust, and AI Readiness systems for companies entering the AI-mediated search and answer economy.
-        </p>
-        <p>
-          <strong>Email:</strong> <a href="mailto:contact@5thelement.ai">contact@5thelement.ai</a><br>
-          <strong>Phone:</strong> <a href="tel:+40737123540">+40737123540</a><br>
-          <strong>Website:</strong> <a href="https://5thelement.ai/">https://5thelement.ai</a>
-        </p>
-      </div>
-
-      <div>
-        <h3>Quick Links</h3>
-        <p><a href="https://5thelement.ai/ai.json">ai.json</a></p>
-        <p><a href="https://5thelement.ai/llms.txt">llms.txt</a></p>
-        <p><a href="https://5thelement.ai/ai-proof.json">ai-proof.json</a></p>
-        <p><a href="https://5thelement.ai/authority.json">authority.json</a></p>
-        <p><a href="https://5thelement.ai/intents.json">intents.json</a></p>
-      </div>
-
-      <div>
-        <h3>Legal</h3>
-        <p><a href="#audit-ai-terms">Terms & Conditions</a></p>
-        <p><a href="#audit-ai-privacy">Privacy / GDPR Policy</a></p>
-        <p><a href="#audit-ai-cookies">Cookie Policy</a></p>
-        <p><a href="#innovation-glossary-footer">Innovation Glossary</a></p>
-      </div>
-    </div>
-
-    <div id="audit-ai-terms" style="border-top:1px solid var(--line,#e3e3e8); margin-top:28px; padding-top:18px; font-size:12px; color:var(--muted,#666);">
-      <strong>Terms & Conditions:</strong> This tool provides technical and informational audit results. It does not provide legal certification, regulatory certification, guaranteed AI ranking, or guaranteed inclusion in AI-generated answers.
-    </div>
-
-    <div id="audit-ai-privacy" style="border-top:1px solid var(--line,#e3e3e8); margin-top:14px; padding-top:18px; font-size:12px; color:var(--muted,#666);">
-      <strong>Privacy / GDPR Policy:</strong> This static version checks public URLs. Any future email, WhatsApp, CRM, or report delivery feature should be used only for audit delivery, support, and follow-up.
-    </div>
-
-    <div id="audit-ai-cookies" style="border-top:1px solid var(--line,#e3e3e8); margin-top:14px; padding-top:18px; font-size:12px; color:var(--muted,#666);">
-      <strong>Cookie Policy:</strong> This static version does not require marketing cookies. Any future analytics, CRM, or advertising integration should be disclosed before activation.
-    </div>
-  </footer>
-</section>
-
-<script type="application/ld+json" id="innovation-glossary-schema-footer">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://5thelement.ai/#organization",
-      "name": "5thElement.ai",
-      "url": "https://5thelement.ai/",
-      "email": "contact@5thelement.ai",
-      "telephone": "+40737123540",
-      "parentOrganization": {
-        "@type": "Organization",
-        "name": "AiVenture SRL",
-        "url": "https://aiventure.ro/"
-      },
-      "knowsAbout": [
-        "AI Delivery Infrastructure",
-        "AI Visibility",
-        "AI Signals",
-        "AEO",
-        "GEO",
-        "AIO",
-        "AI Trust",
-        "AI Readiness",
-        "SHA-256",
-        "OpenTimestamps",
-        "AI Sonar",
-        "Mockingbird Handshake"
-      ]
-    },
-    {
-      "@type": "DefinedTermSet",
-      "name": "5thElement.ai Innovation Glossary",
-      "url": "https://audit-ai-real-app.pages.dev/#innovation-glossary-footer",
-      "hasDefinedTerm": [
-        {
-          "@type": "DefinedTerm",
-          "name": "Web-AI B2B Network",
-          "description": "A way to make a company visible inside AI systems, not only inside traditional search engines."
-        },
-        {
-          "@type": "DefinedTerm",
-          "name": "B2B Indirect Marketing",
-          "description": "A marketing approach designed to make AI systems select and recommend a company during buyer decisions."
-        },
-        {
-          "@type": "DefinedTerm",
-          "name": "AI Trust Protocol",
-          "description": "A framework that helps AI systems evaluate whether company information is trustworthy."
-        },
-        {
-          "@type": "DefinedTerm",
-          "name": "1-Click Edge Injector",
-          "description": "Technology that adds AI-readable signals to a website without rebuilding it."
-        },
-        {
-          "@type": "DefinedTerm",
-          "name": "B2B Economic Twins",
-          "description": "Structured digital business representations that help AI systems understand offers, services, departments, and operations."
-        },
-        {
-          "@type": "DefinedTerm",
-          "name": "AI Delivery Infrastructure",
-          "alternateName": "ADI",
-          "description": "Infrastructure that helps AI systems discover, understand, trust, and act on company information."
-        },
-        {
-          "@type": "DefinedTerm",
-          "name": "AI Sonar",
-          "description": "A monitoring system that measures whether AI can find, understand, trust, and recommend a company."
-        },
-        {
-          "@type": "DefinedTerm",
-          "name": "Mockingbird Handshake",
-          "description": "A structured communication pattern between websites and AI systems for machine-to-machine understanding."
-        },
-        {
-          "@type": "DefinedTerm",
-          "name": "SHA-256",
-          "description": "A digital fingerprint that proves a file or definition is exactly the same as when it was recorded."
-        },
-        {
-          "@type": "DefinedTerm",
-          "name": "OpenTimestamps",
-          "alternateName": "OTS",
-          "description": "A timestamp proof showing that a file or definition existed at a specific moment in time."
-        },
-        {
-          "@type": "DefinedTerm",
-          "name": "Bitcoin Block",
-          "description": "A public immutable timestamp anchor used to prove that a recorded fingerprint existed at a certain point in history."
-        }
-      ]
-    },
-    {
-      "@type": "OfferCatalog",
-      "name": "5thElement.ai AI Visibility Services",
-      "itemListElement": [
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Visibility Audit", "description": "Checks whether AI systems can find, understand, trust, and use a company website." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Discovery Setup", "description": "Deploys robots.txt, sitemap.xml, and llms.txt discovery signals." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Understanding Layer", "description": "Adds semantic structure, JSON-LD, and clear entity definitions." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Declaration Layer", "description": "Creates ai.json, authority.json, and entity declarations." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Answer Readiness", "description": "Maps buyer intents and questions into machine-readable answer structures." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Trust & Proof Layer", "description": "Adds proof, provenance, trust-state, and authority signals." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Operational Readiness", "description": "Adds governance and operational AI readiness signals." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "1-Click Edge AI Readiness", "description": "Adds AI-readable signals at the Edge without rebuilding the website." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Proof Header Setup", "description": "Advertises proof files through HTTP headers and Link relations." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Signal Pack", "description": "Deploys a complete package of machine-readable AI discovery and trust files." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AEO Optimization", "description": "Improves readiness for answer engines and AI-generated answers." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "GEO Optimization", "description": "Improves how generative AI describes the company." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AIO Optimization", "description": "Improves the company's overall machine readability and AI trust." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Sonar Monitoring", "description": "Measures AI visibility and readiness over time." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "ADI Deployment", "description": "Deploys AI Delivery Infrastructure for AI-readable business presence." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "AI Trust Protocol Implementation", "description": "Adds trust, proof, and provenance signals for AI systems." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "B2B Indirect Marketing System", "description": "Positions a firm to be selected by AI during buyer decision moments." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Economic Twins Design", "description": "Creates structured business representations for AI agents." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Mockingbird Handshake Integration", "description": "Adds structured communication patterns between a site and AI systems." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "EU AI Act Readiness Signals", "description": "Adds machine-readable governance and transparency signals for readiness workflows." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Machine-Readable Governance", "description": "Creates governance.json, policy.json, and trust-state.json." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Intent Architecture", "description": "Creates intents.json and buyer-question maps." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Entity Graph Setup", "description": "Creates entity declarations for company, founder, offers, and proof assets." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Proof Registry Setup", "description": "Publishes proof references, SHA-256 fingerprints, and OTS anchors." } },
-        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Done For You AI Readiness Deployment", "description": "Full deployment of AI-readable discovery, declaration, trust, and readiness infrastructure." } }
-      ]
-    }
-  ]
-}
-</script>
 </body>
 </html>
