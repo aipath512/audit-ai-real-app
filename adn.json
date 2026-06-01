@@ -1,0 +1,6 @@
+"belongs_to_value_ladder": {
+  "module": "M01",
+  "module_name": "AI Signals Audit",
+  "purpose": "Assess AI visibility gaps",
+  "next_module": "M02 AI READY Transformation"
+}
